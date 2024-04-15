@@ -19,4 +19,11 @@ export default defineConfig({
     enabled: false,
   },
   integrations: [tailwind()],
+  i18n: {
+    defaultLocale: "fr",
+    locales: ["fr", "en", "es", "ca"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });
