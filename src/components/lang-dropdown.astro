@@ -1,0 +1,57 @@
+---
+import CommonSvg from "./common/common-svg.astro";
+import FrIcon from "../assets/icons/fr.svg?raw";
+import EnIcon from "../assets/icons/en.svg?raw";
+import EsIcon from "../assets/icons/es.svg?raw";
+import CaIcon from "../assets/icons/ca.svg?raw";
+import { useStrapi } from "../api/strapi";
+
+const listIconsLocales = {
+  fr: FrIcon,
+  en: EnIcon,
+  es: EsIcon,
+  ca: CaIcon,
+};
+
+const listMenuLocales = await useStrapi().getCarte();
+console.log(listMenuLocales);
+---
+
+<section
+  class="flex flex-row w-full justify-center items-center gap-6 p-8 max-w-screen-xl m-auto"
+>
+  {
+    listMenuLocales.map(
+      (lang: {
+        attributes: {
+          locale: "fr" | "es" | "en" | "ca";
+          menu: { data: { attributes: { url: string } } };
+        };
+      }) => (
+        <div class="rounded-md w-1/4 max-w-28">
+          <a href={lang.attributes.menu.data.attributes.url}>
+            <CommonSvg
+              raw={listIconsLocales[lang.attributes.locale] as string}
+              class="rounded-md w-full shadow-lg"
+            />
+          </a>
+        </div>
+      )
+    )
+  }
+</section>
+
+<script is:inline>
+  import { useStrapi } from "../api/strapi";
+
+  const onClick = async (locale) => {
+    const pdfUrl = useStrapi().getCarte(locale);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = pdfUrl;
+    link.dispatchEvent(new MouseEvent("click"));
+  };
+  document
+    .querySelector("data-lang")
+    .addEventListener("click", () => onClick("fr"));
+</script>

@@ -1,19 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
-const listLocales = await fetch(
-  "https://cafevienne-strapi-50c10a96fc3f.herokuapp.com/api/i18n/locales"
-).then((res) => res.json());
 ---
 
-<Layout title="" lang="en">
-  <main>
-    <h1>Café Vienne</h1>
-    <section>
-      <article>
-        <h2>Menu</h2>
-        {listLocales.map((locale: any) => <span>{locale.name}</span>)}
-      </article>
-    </section>
-  </main>
-</Layout>
+<Layout title="" lang="en" />
