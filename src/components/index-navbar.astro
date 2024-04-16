@@ -1,0 +1,106 @@
+---
+import CommonSvg from "./common/common-svg.astro";
+import InstagraSvg from "../assets/icons/instagram.svg?raw";
+import FacebookSvg from "../assets/icons/facebook.svg?raw";
+
+export interface Props {
+  links: Record<string, string>;
+}
+
+const { links } = Astro.props;
+---
+
+<header
+  class="w-full fixed z-50 transition-colors duration-300 text-bright py-5"
+>
+  <div class="max-w-screen-xl m-auto px-5">
+    <div
+      class="flex flex-col lg:flex-row justify-between items-center relative z-10"
+    >
+      <div
+        class="flex w-full lg:w-auto max-h-full justify-between items-center"
+      >
+        <a data-display="hidden" class="opacity-0 transition-opacity" href="/">
+          <span class="sr-only">Alice Szymanski</span>
+        </a>
+        <div class="block lg:hidden">
+          <button id="toggle-menu" aria-label="Toggle Menu">
+            <svg
+              fill="currentColor"
+              class="w-6 h-6 text-dark hover:text-deepblue"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>Toggle Menu</title>
+              <path
+                class="astronav-close-icon astronav-toggle hidden"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"
+              ></path>
+              <path
+                class="astronav-open-icon astronav-toggle"
+                fill-rule="evenodd"
+                d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+        <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
+          {
+            Object.entries(links).map(([link, label]) => (
+              <li class="w-full flex justify-center">
+                <a class="" href={link}>
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="flex gap-2 justify-center text-secondary mt-4 lg:hidden">
+          <CommonSvg raw={InstagraSvg} class="hover:text-dark w-6 h-6" />
+          <CommonSvg raw={FacebookSvg} class="hover:text-dark w-6 h-6" />
+        </div>
+      </nav>
+      <div
+        data-display="hidden"
+        class="hidden lg:flex gap-4 justify-center text-secondary opacity-0 transition-opacity"
+      >
+        <CommonSvg raw={InstagraSvg} class="hover:text-dark w-6 h-6" />
+        <CommonSvg raw={FacebookSvg} class="hover:text-dark w-6 h-6" />
+      </div>
+    </div>
+  </div>
+</header>
+<script is:inline>
+  const button = document.querySelector("#toggle-menu");
+  button.addEventListener("click", () => {
+    const nav = document.querySelector("nav");
+    nav.classList.toggle("hidden");
+  });
+</script>
+<script is:inline>
+  var isOverlayed = false;
+  const onScroll = () => {
+    isOverlayed = window.scrollY > window.innerHeight;
+    const header = document.querySelector("#header");
+    const listHiddenContent = document.querySelectorAll(
+      "[data-display='hidden']"
+    );
+    listHiddenContent.forEach((el) => {
+      el.classList.toggle("opacity-100", isOverlayed);
+      el.classList.toggle("opacity-0", !isOverlayed);
+    });
+    header.classList.toggle("bg-bright", isOverlayed);
+    header.classList.toggle("bg-transparent", !isOverlayed);
+    header.classList.toggle("text-dark", isOverlayed);
+    header.classList.toggle("text-bright", !isOverlayed);
+  };
+
+  document.addEventListener("scroll", onScroll);
+  onScroll();
+</script>
