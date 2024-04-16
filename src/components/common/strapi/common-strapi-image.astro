@@ -1,0 +1,42 @@
+---
+import {
+  type CommonMedia,
+  type LIST_IMAGE_FORMAT,
+  listImageFormat,
+} from "../../../models/strapi/common/media";
+
+interface Props {
+  image: CommonMedia;
+  format?: LIST_IMAGE_FORMAT;
+  [key: string]: any;
+}
+
+const { image, format, ...rest } = Astro.props;
+
+console.log(image);
+
+const attributesString = Object.entries(rest)
+  .map(([key, value]) => `${key}="${value}"`)
+  .join(" ");
+
+export const getImageUrlFromFormat = (
+  image: any,
+  format?: LIST_IMAGE_FORMAT
+) => {
+  if (!image) return null;
+  if (!format) return image.url;
+  else {
+    let imageUrl = image.formats[format].url;
+    if (!imageUrl) {
+      imageUrl = image.formats[listImageFormat.indexOf(format) + 1].url;
+    }
+    return imageUrl;
+  }
+};
+
+const imageUrl = getImageUrlFromFormat(image, format);
+---
+
+<Fragment
+  set:html={`<img src="http://localhost:1337${imageUrl}"" alt=${image.alternativeText} ${attributesString}/>`}
+/>
