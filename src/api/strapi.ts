@@ -31,9 +31,14 @@ export const useStrapi = (locale: (typeof listLocale)[number] = "all") => {
 
   const getAccueil = async () => {
     const qsString = qs.stringify({
-      populate: {
-        entete: "*",
-      },
+      populate: [
+        "entete",
+        "entete.media",
+        "entete.media.formats",
+        "histoire",
+        "histoire.media",
+        "histoire.media.formats",
+      ],
       locale,
     });
     return fetchStrapi<StrapiEncapsuler<AccueilModel>>("accueil", qsString);

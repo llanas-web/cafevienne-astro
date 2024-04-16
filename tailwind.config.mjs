@@ -10,7 +10,7 @@ export default {
     extend: {
       colors: {
         dark: colors.slate["800"],
-        bright: colors.slate["200"],
+        bright: colors.slate["100"],
         primary: colors.emerald["950"],
         secondary: colors.amber["500"],
       },

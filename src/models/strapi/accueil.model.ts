@@ -1,9 +1,7 @@
-import type { StrapiEncapsuler } from "./common/encapsuler";
-import type { CommonMedia } from "./common/media";
+import type { PageContent, PageHeader } from "./components/page.interface";
 import type { StrapiLocale } from "./locale.interface";
 
 export interface AccueilModel extends StrapiLocale {
-  titre: string;
-  description: string;
-  entete: StrapiEncapsuler<CommonMedia>;
+  entete: PageHeader;
+  histoire: PageContent;
 }

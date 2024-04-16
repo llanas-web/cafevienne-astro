@@ -12,6 +12,7 @@ interface Props {
 }
 
 const { image, format, ...rest } = Astro.props;
+console.log(image);
 
 const attributesString = Object.entries(rest)
   .map(([key, value]) => `${key}="${value}"`)
@@ -36,5 +37,5 @@ const imageUrl = getImageUrlFromFormat(image, format);
 ---
 
 <Fragment
-  set:html={`<img src="http://localhost:1337${imageUrl}"" alt=${image.alternativeText} ${attributesString}/>`}
+  set:html={`<img src="http://localhost:1337${imageUrl}" alt="${image.alternativeText}" ${attributesString}/>`}
 />

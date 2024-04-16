@@ -1,0 +1,22 @@
+---
+import type { ContentBlock } from "../../../models/strapi/common/content-block";
+
+export interface Props {
+  content: ContentBlock;
+}
+
+const { content } = Astro.props;
+---
+
+{
+  content.map((block) => {
+    switch (block.type) {
+      case "paragraph": {
+        return <Astro.self content={block.children} />;
+      }
+      case "text": {
+        return <p class="text-md">{block.text}</p>;
+      }
+    }
+  })
+}

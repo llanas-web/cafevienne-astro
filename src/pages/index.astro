@@ -3,6 +3,7 @@ import IndexNavbar from "../components/index-navbar.astro";
 import Layout from "../layouts/Layout.astro";
 import HomeHero from "../components/home/home-hero.astro";
 import { useStrapi } from "../api/strapi";
+import HomeHistory from "../components/home/home-history.astro";
 
 const listLinks = {
   "/": "Accueil",
@@ -12,14 +13,12 @@ const listLinks = {
 };
 
 const strapiAccueil = await useStrapi("fr").getAccueil();
-const { titre, description, entete, locale } = strapiAccueil.data.attributes;
+console.log(strapiAccueil);
+const { entete, histoire, locale } = strapiAccueil.data.attributes;
 ---
 
 <Layout title="" lang="fr">
   <IndexNavbar links={listLinks} />
-  <HomeHero
-    titre={titre}
-    description={description}
-    image={entete.data.attributes}
-  />
+  <HomeHero entete={entete} />
+  <HomeHistory history={histoire} />
 </Layout>

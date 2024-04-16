@@ -1,0 +1,36 @@
+---
+import type { CommonMedia } from "../../models/strapi/common/media";
+import type { PageContent } from "../../models/strapi/components/page.interface";
+import CommonStrapiContentblock from "../common/strapi/common-strapi-contentblock.astro";
+import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
+
+export interface Props {
+  history: PageContent;
+}
+
+const { history } = Astro.props;
+---
+
+<section class="bg-bright text-dark w-full">
+  <article
+    class="max-w-screen-xl m-auto flex flex-row px-16 py-56 gap-16 h-full"
+  >
+    <CommonStrapiImage
+      image={history.media?.data.attributes as CommonMedia}
+      format="medium"
+      class="aspect-square w-1/3 object-cover shadow-xl rounded-sm"
+    />
+    <div class="p-8 flex flex-col">
+      <h2 class="text-xl uppercase font-bold text-emerald-900">
+        {history.titre}
+      </h2>
+      <h3 class="mb-4">{history.description}</h3>
+      <CommonStrapiContentblock content={history.contenu} />
+      <div class="mt-auto flex justify-center">
+        <button class="border-double border-4 border-secondary px-4 py-2"
+          >Read more...</button
+        >
+      </div>
+    </div>
+  </article>
+</section>

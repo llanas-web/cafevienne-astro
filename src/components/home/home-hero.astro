@@ -1,19 +1,19 @@
 ---
 import type { CommonMedia } from "../../models/strapi/common/media";
+import type { PageHeader } from "../../models/strapi/components/page.interface";
 import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
 
 export interface Props {
-  titre: string;
-  description: string;
-  image: CommonMedia;
+  entete: PageHeader;
 }
 
-const { titre, description, image } = Astro.props;
+const { titre, description, media } = Astro.props.entete;
+console.log(media);
 ---
 
 <div class="w-full h-screen relative">
   <CommonStrapiImage
-    image={image}
+    image={media.data.attributes}
     format="large"
     class="absolute z-1 object-cover object-center w-full h-full filter brightness-50"
   />
