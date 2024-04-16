@@ -12,7 +12,6 @@ const listLinks = {
 };
 
 const strapiAccueil = await useStrapi("fr").getAccueil();
-console.log(strapiAccueil);
 const { titre, description, entete, locale } = strapiAccueil.data.attributes;
 ---
 

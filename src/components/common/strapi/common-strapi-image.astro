@@ -13,8 +13,6 @@ interface Props {
 
 const { image, format, ...rest } = Astro.props;
 
-console.log(image);
-
 const attributesString = Object.entries(rest)
   .map(([key, value]) => `${key}="${value}"`)
   .join(" ");
