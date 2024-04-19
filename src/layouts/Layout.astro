@@ -23,5 +23,47 @@ const { title, lang } = Astro.props;
   </head>
   <body>
     <slot />
+    <script is:inline>
+      const mapVisibleParallax = new Map();
+      const listParalax = document.querySelectorAll("[data-parallax]");
+      var animationFrameInterval = null;
+      var hasBeenScrolled = true;
+
+      const onScrollLayout = () => {
+        if (hasBeenScrolled) {
+          mapVisibleParallax.values().forEach((element) => {
+            const parallaxScale = element.dataset.parallax;
+            element.style.transform = `translateY(${(-element.y * parallaxScale) / 10}px)`;
+          });
+        }
+        hasBeenScrolled = false;
+        animationFrameInterval = window.requestAnimationFrame(onScrollLayout);
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            mapVisibleParallax.set(
+              entry.target.dataset.parallaxIndex,
+              entry.target
+            );
+          } else {
+            entry.target.style.transform = "translateY(0)";
+            mapVisibleParallax.delete(entry.target.dataset.parallaxIndex);
+          }
+        });
+      });
+
+      listParalax.forEach((element, index) => {
+        element.dataset.parallaxIndex = index;
+        observer.observe(element);
+      });
+
+      window.addEventListener("scroll", () => {
+        hasBeenScrolled = true;
+      });
+
+      onScrollLayout();
+    </script>
   </body>
 </html>
