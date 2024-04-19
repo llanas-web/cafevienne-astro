@@ -2,6 +2,8 @@
 import type { CommonMedia } from "../../models/strapi/common/media";
 import type { PageHeader } from "../../models/strapi/components/page.interface";
 import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
+import CafeVienneSvg from "../../assets/icons/cafe-vienne.svg?raw";
+import CommonSvg from "../common/common-svg.astro";
 
 export interface Props {
   entete: PageHeader;
@@ -11,16 +13,24 @@ const { titre, description, media } = Astro.props.entete;
 console.log(media);
 ---
 
-<div class="w-full h-screen relative">
+<div class="w-full h-screen relative overflow-hidden">
   <CommonStrapiImage
+    data-parallax="2"
     image={media.data.attributes}
     format="large"
-    class="absolute z-1 object-cover object-center w-full h-full filter brightness-50"
+    class="absolute z-1 object-cover object-center w-full h-full filter brightness-[30%]"
   />
-  <div class="absolute w-full h-full flex justify-center items-center z-10">
-    <div class="flex flex-col text-bright">
-      <h1 class="text-2xl">{titre}</h1>
-      <h3>{description}</h3>
-    </div>
+  <div
+    class="absolute w-full h-full flex flex-col gap-8 justify-center items-center z-10 text-secondary"
+  >
+    <CommonSvg
+      class="w-[20rem] h-[20rem] aspect-square drop-shadow-md"
+      raw={CafeVienneSvg}
+    />
+    <h3
+      class="text-bright font-bodoni text-2xl font-bold uppercase drop-shadow-lg"
+    >
+      {description}
+    </h3>
   </div>
 </div>

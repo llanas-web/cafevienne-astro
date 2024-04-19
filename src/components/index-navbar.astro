@@ -2,6 +2,7 @@
 import CommonSvg from "./common/common-svg.astro";
 import InstagraSvg from "../assets/icons/instagram.svg?raw";
 import FacebookSvg from "../assets/icons/facebook.svg?raw";
+import CafeVienneSvg from "../assets/icons/cafe-vienne.svg?raw";
 
 export interface Props {
   links: Record<string, string>;
@@ -11,6 +12,7 @@ const { links } = Astro.props;
 ---
 
 <header
+  id="header"
   class="w-full fixed z-50 transition-colors duration-300 text-bright py-5"
 >
   <div class="max-w-screen-xl m-auto px-5">
@@ -21,7 +23,8 @@ const { links } = Astro.props;
         class="flex w-full lg:w-auto max-h-full justify-between items-center"
       >
         <a data-display="hidden" class="opacity-0 transition-opacity" href="/">
-          <span class="sr-only">Alice Szymanski</span>
+          <span class="sr-only">Café Vienne</span>
+          <CommonSvg raw={CafeVienneSvg} class="w-16 h-16 text-secondary" />
         </a>
         <div class="block lg:hidden">
           <button id="toggle-menu" aria-label="Toggle Menu">
@@ -95,10 +98,9 @@ const { links } = Astro.props;
       el.classList.toggle("opacity-100", isOverlayed);
       el.classList.toggle("opacity-0", !isOverlayed);
     });
-    header.classList.toggle("bg-bright", isOverlayed);
+    header.classList.toggle("bg-dark", isOverlayed);
+    header.classList.toggle("shadow-lg", isOverlayed);
     header.classList.toggle("bg-transparent", !isOverlayed);
-    header.classList.toggle("text-dark", isOverlayed);
-    header.classList.toggle("text-bright", !isOverlayed);
   };
 
   document.addEventListener("scroll", onScroll);
