@@ -21,6 +21,30 @@
     font-style: italic;
 }
 
+
+@font-face {
+	font-family: 'BodoniModa';
+	src: url('/fonts/BodoniModa-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+	font-family: 'BodoniModa';
+	src: url('/fonts/BodoniModa-Italic.ttf') format('truetype');
+    font-weight: 400;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'BodoniModa';
+	src: url('/fonts/BodoniModa-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+}
+@font-face {
+	font-family: 'BodoniModa';
+	src: url('/fonts/BodoniModa-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+
 html,
 body {
 	padding: 0;
