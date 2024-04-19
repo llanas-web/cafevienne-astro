@@ -45,6 +45,41 @@
 }
 
 
+@font-face {
+	font-family: 'ArtisualDeco';
+	src: url('/fonts/ArtisualDeco-Black.otf') format('opentype');
+    font-weight: 600;
+}
+@font-face {
+	font-family: 'ArtisualDeco';
+	src: url('/fonts/ArtisualDeco-BlackItalic.otf') format('opentype');
+    font-weight: 600;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'ArtisualDeco';
+	src: url('/fonts/ArtisualDeco-Regular.otf') format('opentype');
+    font-weight: 400;
+}
+@font-face {
+	font-family: 'ArtisualDeco';
+	src: url('/fonts/ArtisualDeco-RegularItalic.otf') format('opentype');
+    font-weight: 400;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'ArtisualDeco';
+	src: url('/fonts/ArtisualDeco-Thin.otf') format('opentype');
+    font-weight: 300;
+}
+@font-face {
+	font-family: 'ArtisualDeco';
+	src: url('/fonts/ArtisualDeco-ThinItalic.otf') format('opentype');
+    font-weight: 300;
+	font-style: italic;
+}
+
+
 html,
 body {
 	padding: 0;

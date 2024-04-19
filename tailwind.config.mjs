@@ -7,13 +7,14 @@ export default {
     fontFamily: {
       bodoni: ["BodoniModa", "sans-serif"],
       poppins: ["Poppins", "sans-serif"],
+      artdeco: ["ArtisualDeco", "sans-serif"],
     },
     extend: {
       colors: {
         dark: colors.slate["800"],
         bright: colors.slate["100"],
-        primary: colors.emerald["950"],
-        secondary: colors.amber["500"],
+        primary: colors.amber["500"],
+        secondary: "#A3937A",
       },
     },
   },
