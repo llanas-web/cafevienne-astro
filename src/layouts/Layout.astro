@@ -21,7 +21,7 @@ const { title, lang } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="bg-dark text-bright">
     <slot />
     <script is:inline>
       const mapVisibleParallax = new Map();
@@ -32,8 +32,9 @@ const { title, lang } = Astro.props;
       const onScrollLayout = () => {
         if (hasBeenScrolled) {
           mapVisibleParallax.values().forEach((element) => {
+            const { top } = element.getBoundingClientRect();
             const parallaxScale = element.dataset.parallax;
-            element.style.transform = `translateY(${(-element.y * parallaxScale) / 10}px)`;
+            element.style.transform = `translateY(${(-top * parallaxScale) / 10}px)`;
           });
         }
         hasBeenScrolled = false;
@@ -48,7 +49,6 @@ const { title, lang } = Astro.props;
               entry.target
             );
           } else {
-            entry.target.style.transform = "translateY(0)";
             mapVisibleParallax.delete(entry.target.dataset.parallaxIndex);
           }
         });
