@@ -9,6 +9,7 @@ import ContactImage from "../assets/images/contact.jpg";
 import SalonsImage from "../assets/images/salons.jpg";
 import TerrasseImage from "../assets/images/terrasse.jpg";
 import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
+import CuisineImage from "../assets/images/cuisine.jpg";
 import { Image } from "astro:assets";
 
 const listLinks = {
@@ -43,7 +44,10 @@ const listRedirections = [
   },
 ];
 
-const strapiAccueil = await useStrapi("fr").getAccueil();
+const strapi = useStrapi("fr");
+const strapiAccueil = await strapi.getAccueil();
+const strapiCarte = await strapi.getCarte();
+const listDay = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"] as const;
 const { entete, histoire, locale } = strapiAccueil.data.attributes;
 ---
 
@@ -57,7 +61,7 @@ const { entete, histoire, locale } = strapiAccueil.data.attributes;
     class="bg-dark w-full border-t-4 border-secondary my-8 border-b-2 h-2 shadow-md"
   >
   </div>
-  <div
+  <!-- <div
     class="w-full h-56 bg-dark overflow-hidden flex justify-center items-center"
   >
     <Image
@@ -68,24 +72,53 @@ const { entete, histoire, locale } = strapiAccueil.data.attributes;
       alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
       class="w-full object-cover object-center brightness-75"
     />
-  </div>
-  <section class="bg-bright">
-    <div class="flex flex-row w-full max-w-screen-xl m-auto px-16 py-56 gap-8">
-      {
-        listRedirections.map((redirection) => (
-          <div class="w-1/3">
-            <HomeRedirection
-              title={redirection.title}
-              description={redirection.description}
-              link={redirection.link}
-              image={redirection.image}
-              alternative={redirection.alternative}
-            />
-          </div>
-        ))
-      }
+  </div> -->
+  <div
+    class="w-full py-16 bg-cover bg-center"
+    style={`background-image: url(${CuisineImage.src})`}
+  >
+    <div
+      class="max-w-screen-xl m-auto flex w-full justify-center items-center z-20"
+    >
+      <div class="w-3/5 p-8 bg-dark text-bright">
+        <h2 class="text-4xl font-artdeco mb-8">Menu de la semaine</h2>
+        <ul class="flex flex-col gap-4">
+          {
+            listDay.map((jour: (typeof listDay)[number]) => (
+              <li>
+                <h4 class="italic text-primary underline">{jour}</h4>
+                <div class="w-full flex justify-between">
+                  <span class="text-lg">
+                    {strapiCarte.data.attributes[jour].titre}
+                  </span>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="w-2/5"></div>
+      </div>
     </div>
-  </section>
-  <section class="w-full bg-bright flex justify-center items-center py-56">
-  </section>
+    <section class="bg-bright">
+      <div
+        class="flex flex-row w-full max-w-screen-xl m-auto px-16 py-56 gap-8"
+      >
+        {
+          listRedirections.map((redirection) => (
+            <div class="w-1/3">
+              <HomeRedirection
+                title={redirection.title}
+                description={redirection.description}
+                link={redirection.link}
+                image={redirection.image}
+                alternative={redirection.alternative}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </section>
+    <section class="w-full bg-bright flex justify-center items-center py-56">
+    </section>
+  </div>
 </Layout>
