@@ -1,5 +1,28 @@
 ---
+import IndexNavbar from "../../components/index-navbar.astro";
 import Layout from "../../layouts/Layout.astro";
+import HomeHero from "../../components/home/home-hero.astro";
+import { useStrapi } from "../../api/strapi";
+import HomeHistory from "../../components/home/home-history.astro";
+
+const listLinks = {
+  "/": "Home",
+  "/cartes": "Carts",
+  "/salons": "Rooms",
+  "/contact": "Contact",
+};
+
+const strapiAccueil = await useStrapi("ca").getAccueil();
+const { entete, histoire, locale } = strapiAccueil.data.attributes;
 ---
 
-<Layout title="" lang="en" />
+<Layout title="" lang="ca">
+  <IndexNavbar links={listLinks} />
+  <HomeHero entete={entete} />
+  <HomeHistory history={histoire} button="Read more..." />
+  <section>
+    <article>{listLinks["/cartes"]}</article>
+    <article>{listLinks["/salons"]}</article>
+    <article>{listLinks["/contact"]}</article>
+  </section>
+</Layout>

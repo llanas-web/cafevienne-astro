@@ -4,6 +4,11 @@ import Layout from "../layouts/Layout.astro";
 import HomeHero from "../components/home/home-hero.astro";
 import { useStrapi } from "../api/strapi";
 import HomeHistory from "../components/home/home-history.astro";
+import HomeRedirection from "../components/home/home-redirection.astro";
+import ContactImage from "../assets/images/contact.jpg";
+import SalonsImage from "../assets/images/salons.jpg";
+import TerrasseImage from "../assets/images/terrasse.jpg";
+import CommonYoutube from "../components/common/common-youtube.astro";
 
 const listLinks = {
   "/": "Accueil",
@@ -12,13 +17,56 @@ const listLinks = {
   "/contact": "Contact",
 };
 
+const listRedirections = [
+  {
+    title: "Cartes",
+    description: "Accéder aux cartes menu en différentes langues",
+    link: "/cartes",
+    image: TerrasseImage,
+    alternative: "Terrasse extérieure du café vienne dressée pour le service",
+  },
+  {
+    title: "Salons",
+    description: "Voir les différentes salons privées pour vos événements",
+    link: "/salons",
+    image: SalonsImage,
+    alternative: "Salon privé du café vienne décoré pour un événement",
+  },
+  {
+    title: "Contact",
+    description:
+      "Informations détaillé sur le Café Vienne et comment nous contacter",
+    link: "/contact",
+    image: ContactImage,
+    alternative: "Logo café vienne sur vitre texturé avec journal du jour",
+  },
+];
+
 const strapiAccueil = await useStrapi("fr").getAccueil();
-console.log(strapiAccueil);
 const { entete, histoire, locale } = strapiAccueil.data.attributes;
 ---
 
 <Layout title="" lang="fr">
   <IndexNavbar links={listLinks} />
   <HomeHero entete={entete} />
-  <HomeHistory history={histoire} />
+  <HomeHistory history={histoire} button="En savoir plus..." />
+  <section class="bg-bright">
+    <div class="flex flex-row w-full max-w-screen-xl m-auto px-16 py-56 gap-8">
+      {
+        listRedirections.map((redirection) => (
+          <div class="w-1/3">
+            <HomeRedirection
+              title={redirection.title}
+              description={redirection.description}
+              link={redirection.link}
+              image={redirection.image}
+              alternative={redirection.alternative}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <section class="w-full bg-bright flex justify-center items-center py-56">
+  </section>
 </Layout>
