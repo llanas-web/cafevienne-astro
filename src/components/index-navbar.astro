@@ -26,7 +26,7 @@ const { links } = Astro.props;
           <span class="sr-only">Café Vienne</span>
           <CommonSvg
             raw={CafeVienneSvg}
-            class="w-16 h-16 text-secondary shadow-xl"
+            class="w-16 h-16 text-primary shadow-xl"
           />
         </a>
         <div class="block lg:hidden">
@@ -59,7 +59,7 @@ const { links } = Astro.props;
         <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
           {
             Object.entries(links).map(([link, label]) => (
-              <li class="w-full flex justify-center">
+              <li class="w-full flex justify-center hover:text-primary after:h-2 after:w-full ">
                 <a class="" href={link}>
                   {label}
                 </a>
@@ -67,14 +67,14 @@ const { links } = Astro.props;
             ))
           }
         </ul>
-        <div class="flex gap-2 justify-center text-secondary mt-4 lg:hidden">
+        <div class="flex gap-2 justify-center text-primary mt-4 lg:hidden">
           <CommonSvg raw={InstagraSvg} class="hover:text-dark w-6 h-6" />
           <CommonSvg raw={FacebookSvg} class="hover:text-dark w-6 h-6" />
         </div>
       </nav>
       <div
         data-display="hidden"
-        class="hidden lg:flex gap-4 justify-center text-secondary opacity-0 transition-opacity"
+        class="hidden lg:flex gap-4 justify-center text-primary opacity-0 transition-opacity"
       >
         <CommonSvg raw={InstagraSvg} class="hover:text-dark w-6 h-6" />
         <CommonSvg raw={FacebookSvg} class="hover:text-dark w-6 h-6" />

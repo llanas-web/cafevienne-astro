@@ -34,7 +34,9 @@ const { title, lang } = Astro.props;
           mapVisibleParallax.values().forEach((element) => {
             const { top } = element.getBoundingClientRect();
             const parallaxScale = element.dataset.parallax;
-            element.style.transform = `translateY(${(-top * parallaxScale) / 10}px)`;
+            const middleY = (window.innerHeight - 96) / 2;
+            const halfHeight = element.offsetHeight / 2 + top;
+            element.style.transform = `translateY(${((middleY - halfHeight) * parallaxScale) / 10}px)`;
           });
         }
         hasBeenScrolled = false;
