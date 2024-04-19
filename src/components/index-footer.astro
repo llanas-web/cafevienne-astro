@@ -1,0 +1,45 @@
+---
+import CafeVienneSvg from "../assets/icons/cafe-vienne.svg?raw";
+import CommonSvg from "./common/common-svg.astro";
+---
+
+<footer class="w-full bg-dark">
+  <div
+    class="max-w-screen-xl w-full flex flex-row p-8 m-auto justify-center items-center"
+  >
+    <div class="p-2">
+      <img
+        src="https://maps.googleapis.com/maps/api/staticmap?center=42.698204,2.892412&zoom=18&size=300x300&key=AIzaSyA9EszeYu_WTGWZOhvy0xnV7p3pBpOrBJU&markers=color:red%7Clabel:S%7C48.8587,2.293710"
+        alt="Effiel Tower"
+      />
+    </div>
+    <div class="p-4 h-auto flex flex-col gap-2 w-2/5">
+      <div class="text-4xl font-artdeco">Café Vienne</div>
+      <div class="mb-4 flex flex-col">
+        <span>2 place Arago</span>
+        <span>66 000 Perpignan</span>
+      </div>
+      <div>
+        <a href="tel:0626356980" class="hover:text-primary">+33 6 26 35 69 80</a
+        >
+      </div>
+      <a href="tel:0626356980" class="hover:text-primary">+33 6 26 35 69 80</a>
+      <div>
+        <a href="mailto:cafevienne@orange.fr" class="hover:text-primary"
+          >cafevienne@orange.fr</a
+        >
+      </div>
+    </div>
+    <div class="p-4">
+      <h3 class="text-2xl font-bodoni">
+        Ouvert tous les jours de midi à tard le soir
+      </h3>
+    </div>
+    <div class="p-2">
+      <CommonSvg
+        class="w-[12rem] h-[12rem] aspect-square drop-shadow-md"
+        raw={CafeVienneSvg}
+      />
+    </div>
+  </div>
+</footer>
