@@ -13,7 +13,7 @@ const { links } = Astro.props;
 
 <header
   id="header"
-  class="w-full fixed z-50 transition-colors duration-300 text-bright py-5"
+  class="w-full fixed z-50 transition-colors duration-300 text-bright font-bodoni text-sm uppercase font-regular tracking-wide py-4"
 >
   <div class="max-w-screen-xl m-auto px-5">
     <div
@@ -24,7 +24,10 @@ const { links } = Astro.props;
       >
         <a data-display="hidden" class="opacity-0 transition-opacity" href="/">
           <span class="sr-only">Café Vienne</span>
-          <CommonSvg raw={CafeVienneSvg} class="w-16 h-16 text-secondary" />
+          <CommonSvg
+            raw={CafeVienneSvg}
+            class="w-16 h-16 text-secondary shadow-xl"
+          />
         </a>
         <div class="block lg:hidden">
           <button id="toggle-menu" aria-label="Toggle Menu">
@@ -89,7 +92,7 @@ const { links } = Astro.props;
 <script is:inline>
   var isOverlayed = false;
   const onScroll = () => {
-    isOverlayed = window.scrollY > window.innerHeight;
+    isOverlayed = window.scrollY > 64;
     const header = document.querySelector("#header");
     const listHiddenContent = document.querySelectorAll(
       "[data-display='hidden']"
