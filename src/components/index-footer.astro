@@ -1,11 +1,20 @@
 ---
 import CafeVienneSvg from "../assets/icons/cafe-vienne.svg?raw";
 import CommonSvg from "./common/common-svg.astro";
+import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
+import { Image } from "astro:assets";
 ---
 
-<footer class="w-full bg-dark">
+<footer class="w-full bg-dark relative overflow-hidden">
+  <Image
+    src={TablesForegroundImage}
+    widths={[240, 540, 720, TablesForegroundImage.width]}
+    sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${TablesForegroundImage.width}px`}
+    alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
+    class="absolute w-full brightness-[25%]"
+  />
   <div
-    class="max-w-screen-xl w-full flex flex-row p-8 m-auto justify-center items-center"
+    class="relative max-w-screen-xl w-full flex flex-row p-16 m-auto justify-center items-center"
   >
     <div class="p-2">
       <img

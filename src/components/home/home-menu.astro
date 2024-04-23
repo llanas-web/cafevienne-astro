@@ -1,9 +1,5 @@
 ---
-import { useStrapi } from "../../api/strapi";
 import CuisineImage from "../../assets/images/cuisine.jpg";
-
-const strapiCarte = await useStrapi("fr").getCarte();
-const listDay = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"] as const;
 ---
 
 <section
@@ -14,25 +10,18 @@ const listDay = ["lundi", "mardi", "mercredi", "jeudi", "vendredi"] as const;
     class="max-w-screen-xl m-auto flex w-full justify-center items-center z-20"
   >
     <article class="w-3/5 p-8 bg-dark text-bright">
-      <h2 class="text-4xl font-artdeco mb-8">Menu de la semaine</h2>
-      <ul class="flex flex-col gap-4">
-        {
-          listDay.map((jour: (typeof listDay)[number]) => (
-            <li>
-              <h4 class="italic text-primary underline">{jour}</h4>
-              <div class="w-full flex justify-between">
-                <span class="text-lg">
-                  {strapiCarte.data.attributes[jour].titre}
-                </span>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-      <div class="mt-16 flex justify-center">
-        <button class="border-double border-4 border-secondary px-4 py-2"
-          >Voir la carte</button
-        >
+      <h2 class="text-4xl font-artdeco">Le chef vous propose</h2>
+      <div
+        class="flex flex-row justify-between items-center text-xl font-bodoni mb-8 border-b-primary border-b-2 py-4"
+      >
+        <span class="uppercase font-bold">Le plat du jour à</span>
+        <span>16 €</span>
+      </div>
+      <div
+        class="flex justify-between items-center font-bodoni text-xl border-t-primary border-t-2 py-4"
+      >
+        <p>Entrée et Desserts suggestions du chef</p>
+        <span class="text-primary">5,50 €</span>
       </div>
     </article>
     <div class="w-2/5"></div>
