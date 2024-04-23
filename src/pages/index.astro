@@ -20,31 +20,6 @@ const listLinks = {
   "/contact": "Contact",
 };
 
-const listRedirections = [
-  {
-    title: "Cartes",
-    description: "Accéder aux cartes menu en différentes langues",
-    link: "/cartes",
-    image: TerrasseImage,
-    alternative: "Terrasse extérieure du café vienne dressée pour le service",
-  },
-  {
-    title: "Salons",
-    description: "Voir les différentes salons privées pour vos événements",
-    link: "/salons",
-    image: SalonsImage,
-    alternative: "Salon privé du café vienne décoré pour un événement",
-  },
-  {
-    title: "Contact",
-    description:
-      "Informations détaillé sur le Café Vienne et comment nous contacter",
-    link: "/contact",
-    image: ContactImage,
-    alternative: "Logo café vienne sur vitre texturé avec journal du jour",
-  },
-];
-
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
 const { entete, histoire, locale } = strapiAccueil.data.attributes;
@@ -52,6 +27,7 @@ const { entete, histoire, locale } = strapiAccueil.data.attributes;
 
 <Layout title="" lang="fr">
   <IndexNavbar links={listLinks} />
+  <!-- 
   <HomeHero entete={entete} />
   <div class="bg-dark w-full border-t-4 border-secondary my-8 border-b-2 h-2">
   </div>
@@ -92,5 +68,5 @@ const { entete, histoire, locale } = strapiAccueil.data.attributes;
   </div>
   <section class="w-full bg-bright flex justify-center items-center py-56">
   </section>
-  <IndexFooter />
+  <IndexFooter /> -->
 </Layout>
