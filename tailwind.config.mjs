@@ -5,16 +5,16 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {
-      bodoni: ["BodoniModa", "sans-serif"],
-      poppins: ["Poppins", "sans-serif"],
-      artdeco: ["ArtisualDeco", "sans-serif"],
+      cormier: ["Cormier", "sans-serif"],
+      metropolis: ["Metropolis", "sans-serif"],
+      valencia: ["Valencia", "sans-serif"],
     },
     extend: {
       colors: {
-        dark: colors.slate["800"],
-        bright: colors.slate["100"],
-        primary: colors.amber["500"],
-        secondary: "#A3937A",
+        dark: "#2B2F2D",
+        bright: "#E6E6E6",
+        primary: "#BF954A",
+        secondary: "#263835",
       },
     },
   },
