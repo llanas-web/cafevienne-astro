@@ -2,14 +2,28 @@ import type { StrapiEncapsuler } from "../common/encapsuler";
 import type { CommonMedia } from "../common/media";
 
 export interface PageHeader {
-  titre: string;
-  description?: string;
-  media: StrapiEncapsuler<CommonMedia>;
+  title: string;
+  subtitle?: string;
+  content?: string;
+  background: StrapiEncapsuler<CommonMedia>;
 }
 
 export interface PageContent {
-  titre?: string;
-  description?: string;
+  title?: string;
+  subtitle?: string;
   contenu: any;
-  media?: StrapiEncapsuler<CommonMedia>;
+  images?: StrapiEncapsuler<CommonMedia>;
+}
+
+export interface PageDivider {
+  content: string;
+  background: StrapiEncapsuler<CommonMedia>;
+}
+
+export interface PageFooter {
+  title?: string;
+  subtitle?: string;
+  phone: string;
+  email: string;
+  address: string;
 }

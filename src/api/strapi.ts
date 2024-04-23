@@ -5,6 +5,20 @@ import type { CarteModel } from "../models/strapi/carte.model";
 
 const listLocale = ["all", "fr", "en", "es", "ca"] as const;
 
+const populateComponent = (name: string, mediaName?: string) => {
+  const listPopulated = [name];
+  if (mediaName) {
+    listPopulated.push(
+      ...[
+        `${name}.${mediaName}`,
+        `${name}.${mediaName}`,
+        `${name}${mediaName}.formats`,
+      ]
+    );
+  }
+  return listPopulated;
+};
+
 const fetchStrapi = async <T>(api: string, query: string = ""): Promise<T> => {
   try {
     const request = new Request(
@@ -40,12 +54,13 @@ export const useStrapi = (locale: (typeof listLocale)[number] = "all") => {
   const getAccueil = async () => {
     const qsString = qs.stringify({
       populate: [
-        "entete",
-        "entete.media",
-        "entete.media.formats",
-        "histoire",
-        "histoire.media",
-        "histoire.media.formats",
+        ...populateComponent("histoire", "images"),
+        ...populateComponent("menu", "images"),
+        ...populateComponent("carte"),
+        ...populateComponent("salon_header", "background"),
+        ...populateComponent("salon_content", "images"),
+        ...populateComponent("medias"),
+        ...populateComponent("footer"),
       ],
       locale,
     });
