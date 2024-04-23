@@ -54,6 +54,7 @@ export const useStrapi = (locale: (typeof listLocale)[number] = "all") => {
   const getAccueil = async () => {
     const qsString = qs.stringify({
       populate: [
+        ...populateComponent("entete", "background"),
         ...populateComponent("histoire", "images"),
         ...populateComponent("menu", "images"),
         ...populateComponent("carte"),

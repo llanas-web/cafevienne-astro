@@ -22,14 +22,14 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
+console.log(strapiAccueil);
 const { entete, histoire, locale } = strapiAccueil.data.attributes;
 ---
 
 <Layout title="" lang="fr">
-  <div class="bg-secondary container h-44"></div>
-  <!-- <IndexNavbar links={listLinks} /> -->
-  <!-- 
+  <IndexNavbar links={listLinks} />
   <HomeHero entete={entete} />
+  <!-- 
   <div class="bg-dark w-full border-t-4 border-secondary my-8 border-b-2 h-2">
   </div>
   <HomeHistory history={histoire} button="En savoir plus..." />
