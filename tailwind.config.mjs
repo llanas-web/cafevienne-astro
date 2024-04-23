@@ -9,6 +9,15 @@ export default {
       metropolis: ["Metropolis", "sans-serif"],
       valencia: ["Valencia", "sans-serif"],
     },
+    container: {
+      center: true,
+      screens: {
+        sm: "368px", // 24rem = 4 * 6rem
+        md: "672px", // 40rem = 6 * 7rem
+        lg: "960px", // 60rem = 8 * 7.5rem
+        xl: "1152px", // 74rem = 12 * 6rem
+      },
+    },
     extend: {
       colors: {
         dark: "#2B2F2D",
