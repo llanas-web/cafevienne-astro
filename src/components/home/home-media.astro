@@ -1,0 +1,32 @@
+---
+import type { CommonMedia } from "../../models/strapi/common/media";
+import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
+
+export interface Props {
+  medias: CommonMedia[];
+}
+
+const { medias } = Astro.props;
+---
+
+<section class="container">
+  <div class="py-20">
+    <video controls class="m-auto w-lg">
+      <source
+        src="https://cafevienne-strapi.s3.eu-west-3.amazonaws.com/cafe-vienne-restaurant.m4v"
+      />
+    </video>
+  </div>
+  <div class="p-4">
+    <h2 class="font-cormier text-[56px] text-primary text-center">MEDIAS</h2>
+    <div class="mt-16 columns-5 table-fixed gap-4 space-y-4">
+      {
+        medias.map((image) => (
+          <div>
+            <CommonStrapiImage image={image} class="max-w-full rounded-sm" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

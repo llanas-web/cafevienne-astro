@@ -1,21 +1,20 @@
 ---
-import IndexNavbar from "../components/index-navbar.astro";
-import Layout from "../layouts/Layout.astro";
-import HomeHero from "../components/home/home-hero.astro";
 import { useStrapi } from "../api/strapi";
-import HomeHistory from "../components/home/home-history.astro";
-import HomeRedirection from "../components/home/home-redirection.astro";
-import IndexFooter from "../components/index-footer.astro";
-import ContactImage from "../assets/images/contact.jpg";
-import SalonsImage from "../assets/images/salons.jpg";
-import TerrasseImage from "../assets/images/terrasse.jpg";
-import HomeMenu from "../components/home/home-menu.astro";
-import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
 import { Image } from "astro:assets";
+
+import Layout from "../layouts/Layout.astro";
+import IndexNavbar from "../components/index-navbar.astro";
 import CommonSvg from "../components/common/common-svg.astro";
-import DividerSvg from "../assets/icons/divider.svg?raw";
-import CommonStrapiImage from "../components/common/strapi/common-strapi-image.astro";
+import HomeHero from "../components/home/home-hero.astro";
+import HomeHistory from "../components/home/home-history.astro";
+import HomeMenu from "../components/home/home-menu.astro";
 import HomeSalon from "../components/home/home-salon.astro";
+import HomeMedia from "../components/home/home-media.astro";
+
+import ContactImage from "../assets/images/contact.jpg";
+import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
+
+import DividerSvg from "../assets/icons/divider.svg?raw";
 
 const listLinks = {
   "/": "Accueil",
@@ -26,7 +25,7 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
-const { entete, histoire, menu, salon_header, salon_content } =
+const { entete, histoire, menu, salon_header, salon_content, medias } =
   strapiAccueil.data.attributes;
 ---
 
@@ -55,6 +54,17 @@ const { entete, histoire, menu, salon_header, salon_content } =
   <HomeMenu menu={menu} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
   <HomeSalon header={salon_header} content={salon_content} />
+  <div class="h-72 w-full overflow-hidden relative">
+    <Image
+      data-parallax="2"
+      src={ContactImage}
+      widths={[240, 540, 720, ContactImage.width]}
+      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${TablesForegroundImage.width}px`}
+      alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
+      class="w-full object-cover object-center brightness-[35%] absolute -z-10 grayscale"
+    />
+  </div>
+  <HomeMedia medias={medias.data.map((item) => item.attributes)} />
 </Layout>
 <!-- 
   <section class="bg-bright">

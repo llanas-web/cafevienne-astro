@@ -1,4 +1,7 @@
-import type { StrapiEncapsuler } from "./common/encapsuler";
+import type {
+  StrapiEncapsuler,
+  StrapiEncapsulerList,
+} from "./common/encapsuler";
 import type { CommonMedia } from "./common/media";
 import type {
   PageContent,
@@ -14,6 +17,6 @@ export interface AccueilModel extends StrapiLocale {
   carte: StrapiEncapsuler<CommonMedia>;
   salon_header: PageHeader;
   salon_content: PageContent;
-  medias: CommonMedia[];
+  medias: StrapiEncapsulerList<CommonMedia>;
   footer: PageFooter;
 }
