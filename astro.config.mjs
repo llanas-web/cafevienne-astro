@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import vercelServerless from "@astrojs/vercel/serverless";
 import vercelStatic from "@astrojs/vercel/static";
 import tailwind from "@astrojs/tailwind";
+import basicSsl from "@vitejs/plugin-basic-ssl";
 
 const confProd = {
   output: "static",
@@ -25,5 +26,8 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: false,
     },
+  },
+  vite: {
+    plugins: [basicSsl()],
   },
 });
