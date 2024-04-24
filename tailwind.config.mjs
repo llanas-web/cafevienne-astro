@@ -6,9 +6,11 @@ export default {
   theme: {
     fontFamily: {
       cormier: ["Cormier", "sans-serif"],
+      cormorant: ["Cormorant", "sans-serif"],
       metropolis: ["Metropolis", "sans-serif"],
       ornaments: ["Ornaments", "sans-serif"],
       valencia: ["Valencia", "sans-serif"],
+      handwriten: ["AlexBrush", "serif"],
     },
     screens: {
       sm: "640px", // 24rem = 4 * 6rem

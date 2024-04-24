@@ -1,21 +1,32 @@
 @font-face {
 	font-family: 'Cormier';
-	src: url('/fonts/Cormier_Regular.woff') format('woff');
+	src: url('/fonts/Cormier-Regular.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'Metropolis';
-	src: url('/fonts/Metropolis_Regular.woff') format('woff');
+	src: url('/fonts/Metropolis-Regular.woff') format('woff');
 }
 @font-face {
 	font-family: 'Ornaments';
-	src: url('/fonts/Metropolis_Ornaments.woff') format('woff');
+	src: url('/fonts/Metropolis-Ornaments.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'Valencia';
 	src: url('/fonts/Valencia.woff') format('woff');
 }
+
+@font-face {
+	font-family: 'Cormorant';
+	src: url('/fonts/Cormorant-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'AlexBrush';
+	src: url('/fonts/AlexBrush-Regular.ttf') format('truetype');
+}
+
 html,
 body {
 	padding: 0;
