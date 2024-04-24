@@ -7,6 +7,7 @@ export default {
     fontFamily: {
       cormier: ["Cormier", "sans-serif"],
       metropolis: ["Metropolis", "sans-serif"],
+      ornaments: ["Ornaments", "sans-serif"],
       valencia: ["Valencia", "sans-serif"],
     },
     screens: {
