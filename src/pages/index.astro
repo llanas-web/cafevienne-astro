@@ -15,6 +15,7 @@ import { Image } from "astro:assets";
 import CommonSvg from "../components/common/common-svg.astro";
 import DividerSvg from "../assets/icons/divider.svg?raw";
 import CommonStrapiImage from "../components/common/strapi/common-strapi-image.astro";
+import HomeSalon from "../components/home/home-salon.astro";
 
 const listLinks = {
   "/": "Accueil",
@@ -25,7 +26,8 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
-const { entete, histoire, menu } = strapiAccueil.data.attributes;
+const { entete, histoire, menu, salon_header, salon_content } =
+  strapiAccueil.data.attributes;
 ---
 
 <Layout title="" lang="fr">
@@ -51,7 +53,8 @@ const { entete, histoire, menu } = strapiAccueil.data.attributes;
     </div>
   </div>
   <HomeMenu menu={menu} />
-  <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-6" />
+  <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
+  <HomeSalon header={salon_header} content={salon_content} />
 </Layout>
 <!-- 
   <section class="bg-bright">

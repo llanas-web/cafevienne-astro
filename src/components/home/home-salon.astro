@@ -1,0 +1,65 @@
+---
+import type {
+  PageContent,
+  PageHeader,
+} from "../../models/strapi/components/page.interface";
+import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
+
+export interface Props {
+  header: PageHeader;
+  content: PageContent;
+}
+
+const { header, content } = Astro.props;
+---
+
+<section class="relative">
+  <CommonStrapiImage
+    image={header.background.data.attributes}
+    class="h-md w-full object-cover"
+  />
+  <div
+    class="relative -top-24 bg-secondary container p-32 text-bright space-y-24"
+  >
+    <!-- Header -->
+    <article>
+      <h3 class="font-valencia text-xl text-primary">{header.subtitle}</h3>
+      <h2 class="font-cormier text-4xl">{header.title}</h2>
+      <p class="font-cormorant w-sm mt-6 text-[18px]">{header.content}</p>
+    </article>
+    <!-- Content -->
+    <article class="flex flex-row w-full h-sm gap-[-16rem]">
+      <div class="basis-1/2 aspect-square">
+        <CommonStrapiImage
+          image={content.images.data[0].attributes}
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="bg-bright text-dark relative z-10 m-12 p-8 -ml-24 space-y-8">
+        <h2 class="font-valencia text-xl text-primary">{content.title}</h2>
+        <p class="font-cormorant mt-6 text-[18px]">{content.content}</p>
+        <div class="w-full">
+          <button
+            class="h-14 w-44 flex justify-center items-center gap-8 px-4 py-1 bg-secondary text-bright rounded-[4px] m-auto"
+          >
+            <span class="">Contact</span>
+            <svg
+              class="size-5"
+              width="16"
+              height="15"
+              viewBox="0 0 16 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8.293 1.1142C8.48053 0.926726 8.73484 0.821411 9 0.821411C9.26516 0.821411 9.51947 0.926726 9.707 1.1142L15.707 7.1142C15.8945 7.30173 15.9998 7.55603 15.9998 7.8212C15.9998 8.08636 15.8945 8.34067 15.707 8.5282L9.707 14.5282C9.5184 14.7104 9.2658 14.8112 9.0036 14.8089C8.7414 14.8066 8.49059 14.7014 8.30518 14.516C8.11977 14.3306 8.0146 14.0798 8.01233 13.8176C8.01005 13.5554 8.11084 13.3028 8.293 13.1142L12.586 8.8212H1C0.734784 8.8212 0.48043 8.71584 0.292893 8.5283C0.105357 8.34077 0 8.08641 0 7.8212C0 7.55598 0.105357 7.30163 0.292893 7.11409C0.48043 6.92655 0.734784 6.8212 1 6.8212H12.586L8.293 2.5282C8.10553 2.34067 8.00021 2.08636 8.00021 1.8212C8.00021 1.55603 8.10553 1.30173 8.293 1.1142Z"
+                fill="#E6E6E5"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
