@@ -12,6 +12,8 @@ import TerrasseImage from "../assets/images/terrasse.jpg";
 import HomeMenu from "../components/home/home-menu.astro";
 import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
 import { Image } from "astro:assets";
+import CommonSvg from "../components/common/common-svg.astro";
+import DividerSvg from "../assets/icons/divider.svg?raw";
 
 const listLinks = {
   "/": "Accueil",
@@ -29,10 +31,9 @@ const { entete, histoire, locale } = strapiAccueil.data.attributes;
 <Layout title="" lang="fr">
   <IndexNavbar links={listLinks} />
   <HomeHero entete={entete} />
+  <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-6" />
+  <HomeHistory history={histoire} />
   <!-- 
-  <div class="bg-dark w-full border-t-4 border-secondary my-8 border-b-2 h-2">
-  </div>
-  <HomeHistory history={histoire} button="En savoir plus..." />
   <div
     class="bg-dark w-full border-t-4 border-secondary my-8 border-b-2 h-2 shadow-md"
   >
