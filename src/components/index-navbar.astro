@@ -15,18 +15,14 @@ const { links } = Astro.props;
   id="header"
   class="w-full fixed z-50 transition-colors duration-300 text-bright font-cormier text-xl uppercase font-regular tracking-wide"
 >
-  <div class="container h-36">
+  <div class="container h-28">
     <div
       class="h-full flex flex-col lg:flex-row justify-start items-center relative gap-32"
     >
       <div
         class="flex w-full lg:w-auto max-h-full justify-between items-center"
       >
-        <a
-          data-display="hidden"
-          class="opacity-100 transition-opacity"
-          href="/"
-        >
+        <a href="/">
           <span class="sr-only">Café Vienne</span>
           <CommonSvg
             raw={CafeVienneSvg}
@@ -76,10 +72,7 @@ const { links } = Astro.props;
           <CommonSvg raw={FacebookSvg} class="hover:text-dark w-6 h-6" />
         </div>
       </nav>
-      <div
-        data-display="hidden"
-        class="hidden lg:flex gap-4 justify-center text-primary opacity-0 transition-opacity"
-      >
+      <div class="flex gap-4 justify-center text-primary ml-auto">
         <CommonSvg raw={InstagraSvg} class="hover:text-dark w-6 h-6" />
         <CommonSvg raw={FacebookSvg} class="hover:text-dark w-6 h-6" />
       </div>
@@ -110,6 +103,6 @@ const { links } = Astro.props;
     header.classList.toggle("bg-transparent", !isOverlayed);
   };
 
-  // // document.addEventListener("scroll", onScroll);
-  // onScroll();
+  document.addEventListener("scroll", onScroll);
+  onScroll();
 </script>
