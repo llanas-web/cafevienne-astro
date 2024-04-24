@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 
 import Layout from "../layouts/Layout.astro";
 import IndexNavbar from "../components/index-navbar.astro";
+import IndexFooter from "../components/index-footer.astro";
 import CommonSvg from "../components/common/common-svg.astro";
 import HomeHero from "../components/home/home-hero.astro";
 import HomeHistory from "../components/home/home-history.astro";
@@ -25,7 +26,7 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
-const { entete, histoire, menu, salon_header, salon_content, medias } =
+const { entete, histoire, menu, salon_header, salon_content, medias, footer } =
   strapiAccueil.data.attributes;
 ---
 
@@ -65,6 +66,7 @@ const { entete, histoire, menu, salon_header, salon_content, medias } =
     />
   </div>
   <HomeMedia medias={medias.data.map((item) => item.attributes)} />
+  <IndexFooter footer={footer} />
 </Layout>
 <!-- 
   <section class="bg-bright">

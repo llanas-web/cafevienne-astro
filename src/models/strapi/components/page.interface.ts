@@ -27,6 +27,6 @@ export interface PageFooter {
   title?: string;
   subtitle?: string;
   phone: string;
-  email: string;
+  mail: string;
   address: string;
 }

@@ -1,54 +1,75 @@
 ---
 import CafeVienneSvg from "../assets/icons/cafe-vienne.svg?raw";
+import PhoneSvg from "../assets/icons/phone.svg?raw";
+import EmailSvg from "../assets/icons/email.svg?raw";
+import InstagraSvg from "../assets/icons/instagram.svg?raw";
+import FacebookSvg from "../assets/icons/facebook.svg?raw";
+import LlanasSvg from "../assets/icons/llanas.svg?raw";
+import MapSvg from "../assets/icons/map.svg?raw";
+import type { PageFooter } from "../models/strapi/components/page.interface";
 import CommonSvg from "./common/common-svg.astro";
-import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
 import { Image } from "astro:assets";
+
+export interface Props {
+  footer: PageFooter;
+}
+
+const { footer } = Astro.props;
 ---
 
-<footer class="w-full bg-dark relative overflow-hidden">
-  <Image
-    src={TablesForegroundImage}
-    widths={[240, 540, 720, TablesForegroundImage.width]}
-    sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${TablesForegroundImage.width}px`}
-    alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
-    class="absolute w-full brightness-[25%]"
-  />
+<footer class="w-full h-96 bg-secondary text-bright">
   <div
-    class="relative max-w-screen-xl w-full flex flex-row p-16 m-auto justify-center items-center"
+    class="container flex flex-row h-full w-full justify-evenly items-center"
   >
-    <div class="p-2">
-      <img
-        src="https://maps.googleapis.com/maps/api/staticmap?center=42.698204,2.892412&zoom=18&size=300x300&key=AIzaSyA9EszeYu_WTGWZOhvy0xnV7p3pBpOrBJU&markers=color:red%7Clabel:S%7C48.8587,2.293710"
-        alt="Effiel Tower"
-      />
-    </div>
-    <div class="p-4 h-auto flex flex-col gap-2 w-2/5">
-      <div class="text-4xl font-artdeco">Café Vienne</div>
-      <div class="mb-4 flex flex-col">
-        <span>2 place Arago</span>
-        <span>66 000 Perpignan</span>
-      </div>
-      <div>
-        <a href="tel:0626356980" class="hover:text-primary">+33 6 26 35 69 80</a
-        >
-      </div>
-      <a href="tel:0626356980" class="hover:text-primary">+33 6 26 35 69 80</a>
-      <div>
-        <a href="mailto:cafevienne@orange.fr" class="hover:text-primary"
-          >cafevienne@orange.fr</a
-        >
-      </div>
-    </div>
-    <div class="p-4">
-      <h3 class="text-2xl font-bodoni">
-        Ouvert tous les jours de midi à tard le soir
-      </h3>
-    </div>
-    <div class="p-2">
+    <div class="w-1/3">
       <CommonSvg
-        class="w-[12rem] h-[12rem] aspect-square drop-shadow-md"
         raw={CafeVienneSvg}
+        class="w-[12rem] h-[12rem] aspect-square drop-shadow-md text-primary"
       />
+    </div>
+    <div class="w-1/3 text-center space-y-6">
+      <h3 class="font-valencia">{footer.title}</h3>
+      <h4 class="font-cormorant">{footer.subtitle}</h4>
+      <div class="flex flex-col justify-center gap-6 w-56 m-auto font-cormier">
+        <a
+          href={`tel:${footer.phone}`}
+          class="flex justify-between items-center hover:text-primary"
+        >
+          <CommonSvg raw={PhoneSvg} class="size-6" />
+          {footer.phone}
+        </a>
+        <a
+          href={`mailto:${footer.mail}`}
+          class="flex justify-between items-center hover:text-primary lowercase font-cormorant"
+        >
+          <CommonSvg raw={EmailSvg} class="size-6" />
+          {footer.mail}
+        </a>
+        <a
+          href={`geo:42.69832641279886,2.8925804577344163`}
+          class="flex justify-between items-center hover:text-primary text-end font-cormorant"
+        >
+          <CommonSvg raw={MapSvg} class="size-6" />
+          {footer.address}
+        </a>
+      </div>
+    </div>
+    <div class="w-1/3 flex flex-col gap-6 font-cormorant">
+      <div class="flex gap-4 justify-center text-primary">
+        <CommonSvg raw={InstagraSvg} class="size-8 hover:text-bright" />
+        <CommonSvg raw={FacebookSvg} class="size-8 hover:text-bright" />
+      </div>
+      <div
+        class="flex flex-row gap-2 justify-center items-center font-cormorant"
+      >
+        <span> Design et Réalisation : </span>
+        <a href="https://llanas.dev" target="_blank">
+          <CommonSvg raw={LlanasSvg} class="h-4 w-auto text-primary" />
+        </a>
+      </div>
+      <div class="text-center">
+        <span>@ cafevienne 2024 - tout droits réservés</span>
+      </div>
     </div>
   </div>
 </footer>
