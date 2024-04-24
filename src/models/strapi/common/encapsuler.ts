@@ -4,3 +4,10 @@ export type StrapiEncapsuler<T> = {
     attributes: T;
   };
 };
+
+export type StrapiEncapsulerList<T> = {
+  data: {
+    id: number;
+    attributes: T;
+  }[];
+};

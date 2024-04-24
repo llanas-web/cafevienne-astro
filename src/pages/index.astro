@@ -14,6 +14,7 @@ import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
 import { Image } from "astro:assets";
 import CommonSvg from "../components/common/common-svg.astro";
 import DividerSvg from "../assets/icons/divider.svg?raw";
+import CommonStrapiImage from "../components/common/strapi/common-strapi-image.astro";
 
 const listLinks = {
   "/": "Accueil",
@@ -24,8 +25,7 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
-console.log(strapiAccueil);
-const { entete, histoire, locale } = strapiAccueil.data.attributes;
+const { entete, histoire, menu } = strapiAccueil.data.attributes;
 ---
 
 <Layout title="" lang="fr">
@@ -33,12 +33,26 @@ const { entete, histoire, locale } = strapiAccueil.data.attributes;
   <HomeHero entete={entete} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-6" />
   <HomeHistory history={histoire} />
-  <!-- 
-  <div
-    class="bg-dark w-full border-t-4 border-secondary my-8 border-b-2 h-2 shadow-md"
-  >
+  <div class="h-60 w-full overflow-hidden relative">
+    <Image
+      data-parallax="2"
+      src={TablesForegroundImage}
+      widths={[240, 540, 720, TablesForegroundImage.width]}
+      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${TablesForegroundImage.width}px`}
+      alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
+      class="w-full object-cover object-center brightness-[35%] absolute -z-10"
+    />
+    <div class="h-full w-full flex justify-center items-center">
+      <h2 class="text-4xl font-handwriten text-bright">
+        Ici, le <span class="text-primary">bonheur</span> et la <span
+          class="text-primary">cuisine</span
+        > sont <span class="text-primary">fait maison</span>
+      </h2>
+    </div>
   </div>
-  <HomeMenu />
+  <HomeMenu menu={menu} />
+</Layout>
+<!-- 
   <section class="bg-bright">
     <div class="flex flex-row w-full max-w-screen-xl m-auto px-16 py-56 gap-8">
       {
@@ -71,4 +85,3 @@ const { entete, histoire, locale } = strapiAccueil.data.attributes;
   <section class="w-full bg-bright flex justify-center items-center py-56">
   </section>
   <IndexFooter /> -->
-</Layout>

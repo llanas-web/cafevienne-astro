@@ -1,4 +1,7 @@
-import type { StrapiEncapsuler } from "../common/encapsuler";
+import type {
+  StrapiEncapsuler,
+  StrapiEncapsulerList,
+} from "../common/encapsuler";
 import type { CommonMedia } from "../common/media";
 
 export interface PageHeader {
@@ -11,8 +14,8 @@ export interface PageHeader {
 export interface PageContent {
   title?: string;
   subtitle?: string;
-  contenu: any;
-  images?: StrapiEncapsuler<CommonMedia>;
+  content: any;
+  images: StrapiEncapsulerList<CommonMedia>;
 }
 
 export interface PageDivider {

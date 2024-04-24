@@ -6,37 +6,35 @@ import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
 
 export interface Props {
   history: PageContent;
-  button: string;
 }
 
-const { history, button } = Astro.props;
+const { history } = Astro.props;
 ---
 
-<section class="bg-dark text-bright w-full">
-  <div class="my-24">
-    <div
-      class="max-w-screen-xl m-auto flex flex-row justify-end px-16 py-28 gap-16 h-full relative"
-    >
+<section class="container py-32">
+  <div class="grid grid-flow-row grid-cols-2 grid-rows-2 gap-6">
+    <div>
       <CommonStrapiImage
-        image={history.media?.data.attributes as CommonMedia}
+        image={history.images.data[0].attributes}
         format="large"
-        class="top-0 left-0 h-full w-1/2 absolute object-cover shadow-xl rounded-sm"
+        class="h-full object-cover shadow-xl rounded-sm"
       />
-      <div
-        data-parallax="1.2"
-        class="p-16 flex flex-col w-3/5 bg-bright text-dark z-10 shadow-lg blackboard font-bodoni"
-      >
-        <h2 class="text-4xl font-artdeco font-normal tracking-wide">
-          {history.titre}
-        </h2>
-        <h3 class="mb-8">{history.description}</h3>
-        <CommonStrapiContentblock content={history.contenu} />
-        <div class="mt-16 flex justify-center">
-          <button class="border-double border-4 border-secondary px-4 py-2"
-            >{button}</button
-          >
-        </div>
-      </div>
     </div>
+    <div class="flex flex-col p-8">
+      <h2 class="text-3xl font-valencia uppercase tracking-tight">
+        {history.title}
+      </h2>
+      <h3
+        class="flex-grow flex justify-center items-center font-cormorant text-lg"
+      >
+        {history.content}
+      </h3>
+    </div>
+    <div></div>
+    <CommonStrapiImage
+      image={history.images.data[1].attributes}
+      format="large"
+      class="h-full object-cover shadow-xl rounded-sm"
+    />
   </div>
 </section>
