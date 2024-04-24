@@ -1,7 +1,91 @@
 ---
-import CuisineImage from "../../assets/images/cuisine.jpg";
+import type { PageContent } from "../../models/strapi/components/page.interface";
+import CommonSvg from "../common/common-svg.astro";
+import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
+import FrFlagSvg from "../../assets/icons/flags/fr.svg?raw";
+import EsFlagSvg from "../../assets/icons/flags/es.svg?raw";
+import CaFlagSvg from "../../assets/icons/flags/ca.svg?raw";
+import EnFlagSvg from "../../assets/icons/flags/en.svg?raw";
+
+export interface Props {
+  menu: PageContent;
+}
+
+const { menu } = Astro.props;
+
+const listMenu = [
+  { raw: FrFlagSvg },
+  { raw: EsFlagSvg },
+  { raw: CaFlagSvg },
+  { raw: EnFlagSvg },
+];
 ---
 
+<section class="container my-52">
+  <div class="relative h-full w-full">
+    <CommonStrapiImage
+      image={menu.images.data[0].attributes}
+      class="absolute"
+    />
+    <div class="p-12 h-full">
+      <div class="w-sm bg-secondary relative">
+        <div
+          class="absolute -top-10 left-0 font-ornaments w-full flex flex-row justify-between text-[8rem] text-primary px-4"
+        >
+          <span>e</span>
+          <span>z</span>
+        </div>
+        <article
+          class="relative z-10 w-full h-full flex flex-col justify-center items-center py-16 px-5 gap-8 text-bright"
+        >
+          <h2>{menu.subtitle}</h2>
+          <p class="text-center">{menu.content}</p>
+          <button
+            class="h-14 w-36 flex justify-center items-center gap-8 px-4 py-1 bg-primary rounded-[4px]"
+          >
+            <span class="">Carte</span>
+
+            <svg
+              class="size-5"
+              width="16"
+              height="15"
+              viewBox="0 0 16 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M8.293 1.1142C8.48053 0.926726 8.73484 0.821411 9 0.821411C9.26516 0.821411 9.51947 0.926726 9.707 1.1142L15.707 7.1142C15.8945 7.30173 15.9998 7.55603 15.9998 7.8212C15.9998 8.08636 15.8945 8.34067 15.707 8.5282L9.707 14.5282C9.5184 14.7104 9.2658 14.8112 9.0036 14.8089C8.7414 14.8066 8.49059 14.7014 8.30518 14.516C8.11977 14.3306 8.0146 14.0798 8.01233 13.8176C8.01005 13.5554 8.11084 13.3028 8.293 13.1142L12.586 8.8212H1C0.734784 8.8212 0.48043 8.71584 0.292893 8.5283C0.105357 8.34077 0 8.08641 0 7.8212C0 7.55598 0.105357 7.30163 0.292893 7.11409C0.48043 6.92655 0.734784 6.8212 1 6.8212H12.586L8.293 2.5282C8.10553 2.34067 8.00021 2.08636 8.00021 1.8212C8.00021 1.55603 8.10553 1.30173 8.293 1.1142Z"
+                fill="#E6E6E5"></path>
+            </svg>
+          </button>
+          <div
+            class="flex flex-row justify-center items-center px-16 py-4 gap-6"
+          >
+            {
+              listMenu.map((item) => (
+                <button class="cursor-pointer">
+                  <CommonSvg
+                    class="h-auto w-full shadow-sm rounded-[4px] overflow-hidden"
+                    raw={item.raw}
+                  />
+                </button>
+              ))
+            }
+          </div>
+        </article>
+        <div
+          class="absolute -bottom-10 rotate-180 font-ornaments w-full flex flex-row justify-between text-[8rem] text-primary px-4"
+        >
+          <span>e</span>
+          <span>z</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
 <section
   class="w-full py-16 bg-cover bg-center"
   style={`background-image: url(${CuisineImage.src})`}
@@ -26,4 +110,4 @@ import CuisineImage from "../../assets/images/cuisine.jpg";
     </article>
     <div class="w-2/5"></div>
   </div>
-</section>
+</section> -->
