@@ -28,14 +28,16 @@ const { header, content } = Astro.props;
       <p class="font-cormorant w-sm mt-6 text-[18px]">{header.content}</p>
     </article>
     <!-- Content -->
-    <article class="flex flex-row w-full h-sm gap-[-16rem]">
-      <div class="basis-1/2 aspect-square">
+    <article class="flex flex-col lg:flex-row w-full lg:h-sm gap-[-16rem]">
+      <div class="basis-1/2 lg:aspect-square">
         <CommonStrapiImage
           image={content.images.data[0].attributes}
           class="w-full h-full object-cover"
         />
       </div>
-      <div class="bg-bright text-dark relative z-10 m-12 p-8 -ml-24 space-y-8">
+      <div
+        class="bg-bright text-dark relative z-10 m-12 p-8 lg:-ml-24 space-y-8"
+      >
         <h2 class="font-valencia text-xl text-primary">{content.title}</h2>
         <p class="font-cormorant mt-6 text-[18px]">{content.content}</p>
         <div class="w-full">
