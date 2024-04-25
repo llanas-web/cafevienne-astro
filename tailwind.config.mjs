@@ -20,6 +20,13 @@ export default {
     },
     container: {
       center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "2rem",
+        md: "3rem",
+        lg: "4rem",
+        xl: "5rem",
+      },
       // screens: {
       //   sm: "368px", // 24rem = 4 * 6rem
       //   md: "672px", // 40rem = 6 * 7rem

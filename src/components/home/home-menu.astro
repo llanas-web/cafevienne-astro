@@ -40,7 +40,7 @@ const mappedStapiMenu = strapiMenuLocaleAll.data.map(({ attributes }) => ({
       image={menu.images.data[0].attributes}
       class="lg:absolute"
     />
-    <div class="p-12 h-full">
+    <div class="mt-4 lg:p-12 h-full">
       <div class="w-full max-w-sm m-auto lg:m-0 bg-secondary relative">
         <div
           class="absolute -top-10 left-0 font-ornaments w-full flex flex-row justify-between text-[8rem] text-primary px-4"
@@ -67,7 +67,7 @@ const mappedStapiMenu = strapiMenuLocaleAll.data.map(({ attributes }) => ({
             </button>
           </a>
           <div
-            class="flex flex-row justify-center items-center px-16 py-4 gap-6"
+            class="flex flex-row justify-center items-center lg:px-16 py-4 gap-6"
           >
             {
               mappedStapiMenu.map((item) => (

@@ -21,7 +21,7 @@ const { header, content } = Astro.props;
     class="h-md w-full object-cover"
   />
   <div
-    class="relative -top-24 bg-secondary container p-32 text-bright space-y-24"
+    class="relative -top-24 bg-secondary container p-8 md:p-12 lg:p-32 text-bright space-y-24"
   >
     <!-- Header -->
     <article>
@@ -38,7 +38,7 @@ const { header, content } = Astro.props;
         />
       </div>
       <div
-        class="bg-bright text-dark relative z-10 m-12 p-8 lg:-ml-24 space-y-8"
+        class="bg-bright text-dark relative z-10 mt-4 lg:m-12 p-8 lg:-ml-24 space-y-8"
       >
         <h2 class="font-valencia text-xl text-primary">{content.title}</h2>
         <p class="font-cormorant mt-6 text-[18px]">{content.content}</p>
