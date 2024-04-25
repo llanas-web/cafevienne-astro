@@ -1,9 +1,6 @@
 ---
-import type { CommonMedia } from "../../models/strapi/common/media";
 import type { PageHeader } from "../../models/strapi/components/page.interface";
 import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
-import CafeVienneSvg from "../../assets/icons/cafe-vienne.svg?raw";
-import CommonSvg from "../common/common-svg.astro";
 
 export interface Props {
   entete: PageHeader;
@@ -22,15 +19,19 @@ const { title, subtitle, background } = Astro.props.entete;
   <div
     class="absolute w-full m-auto h-full flex flex-col gap-8 justify-center items-center z-10 text-bright"
   >
-    <div class="w-sm text-center space-y-6">
+    <div class="container max-w-lg text-center space-y-6">
       <span class="font-ornaments text-[100px] text-primary">a</span>
-      <h1 class="text-[56px] font-cormier px-12">{title}</h1>
+      <h1 class="text-4xl leading-normal md:text-[56px] font-cormier px-12">
+        {title}
+      </h1>
       <h3 class="text-bright font-metropolis text-2xl tracking-wider">
         {subtitle}
       </h3>
-      <div class="flex flex-row gap-5 justify-center items-center pt-6">
+      <div
+        class="flex flex-col md:flex-row gap-5 justify-center items-center pt-6"
+      >
         <button
-          class="h-14 flex justify-center items-center gap-8 px-4 py-1 bg-primary rounded-[4px]"
+          class="h-14 min-w-44 flex justify-between items-center gap-8 px-4 py-1 bg-primary rounded-[4px]"
         >
           <span class="">Carte</span>
 
@@ -50,7 +51,7 @@ const { title, subtitle, background } = Astro.props.entete;
           </svg>
         </button>
         <button
-          class="h-14 flex justify-center items-center gap-8 px-4 py-1 bg-dark rounded-[4px] border border-bright"
+          class="h-14 min-w-44 flex justify-between items-center gap-8 px-4 py-1 bg-dark rounded-[4px] border border-bright"
         >
           <span class="">Contact</span>
           <svg
