@@ -11,15 +11,17 @@ const { medias } = Astro.props;
 
 <section class="container my-56">
   <div class="py-20">
-    <video controls class="m-auto w-lg">
+    <video controls class="m-auto lg:w-lg">
       <source
         src="https://cafevienne-strapi.s3.eu-west-3.amazonaws.com/cafe-vienne-restaurant.m4v"
       />
     </video>
   </div>
-  <div class="w-lg m-auto">
+  <div class="lg:w-lg m-auto">
     <h2 class="font-cormier text-[56px] text-primary text-center">MEDIAS</h2>
-    <div class="mt-16 columns-5 table-fixed gap-4 space-y-4">
+    <div
+      class="mt-16 columns-2 md:columns-4 lg:columns-5 table-fixed gap-4 space-y-4"
+    >
       {
         medias.map((image) => (
           <div>
