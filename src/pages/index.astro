@@ -18,16 +18,24 @@ import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
 import DividerSvg from "../assets/icons/divider.svg?raw";
 
 const listLinks = {
-  "/": "Accueil",
-  "/cartes": "Cartes",
-  "/salons": "Salons",
-  "/contact": "Contact",
+  "#accueil": "Accueil",
+  "#menu": "Cartes",
+  "#salons": "Salons",
+  "#contact": "Contact",
 };
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
-const { entete, histoire, menu, salon_header, salon_content, medias, footer } =
-  strapiAccueil.data.attributes;
+const {
+  entete,
+  histoire,
+  menu,
+  carte,
+  salon_header,
+  salon_content,
+  medias,
+  footer,
+} = strapiAccueil.data.attributes;
 ---
 
 <Layout title="" lang="fr">
@@ -52,7 +60,7 @@ const { entete, histoire, menu, salon_header, salon_content, medias, footer } =
       </h2>
     </div>
   </div>
-  <HomeMenu menu={menu} />
+  <HomeMenu menu={menu} carte={carte.data.attributes} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
   <HomeSalon header={salon_header} content={salon_content} />
   <div class="h-72 w-full overflow-hidden relative">

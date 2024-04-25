@@ -34,6 +34,7 @@ body {
 	box-sizing: border-box;
 	font-family: 'Valencia', sans-serif;
     font-weight: 400;
+	scroll-behavior: smooth;
 }
 
 p,
