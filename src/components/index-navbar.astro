@@ -15,67 +15,64 @@ const { links } = Astro.props;
   id="header"
   class="w-full fixed z-50 transition-colors duration-300 text-bright font-cormier text-xl uppercase font-regular tracking-wide"
 >
-  <div class="container h-28">
-    <div
-      class="h-full flex flex-col lg:flex-row justify-start items-center relative gap-32"
+  <div
+    class="container flex flex-col lg:flex-row items-center relative lg:gap-32"
+  >
+    <div class="flex w-full h-28 lg:w-auto justify-between items-center">
+      <!-- logo -->
+      <a href="/">
+        <span class="sr-only">Café Vienne</span>
+        <CommonSvg raw={CafeVienneSvg} class="size-20 text-primary shadow-xl" />
+      </a>
+      <!-- burger -->
+      <div class="block lg:hidden">
+        <button id="toggle-menu" aria-label="Toggle Menu">
+          <svg
+            fill="currentColor"
+            class="w-6 h-6 text-primary hover:text-bright"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Toggle Menu</title>
+            <path
+              class="astronav-close-icon astronav-toggle hidden"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"
+            ></path>
+            <path
+              class="astronav-open-icon astronav-toggle"
+              fill-rule="evenodd"
+              d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <nav
+      class="hidden w-full bg-dark lg:bg-transparent rounded-md lg:w-auto p-4 gap-4 lg:flex lg:mt-0"
     >
-      <div
-        class="flex w-full lg:w-auto max-h-full justify-between items-center"
-      >
-        <a href="/">
-          <span class="sr-only">Café Vienne</span>
-          <CommonSvg
-            raw={CafeVienneSvg}
-            class="size-20 text-primary shadow-xl"
-          />
-        </a>
-        <div class="block lg:hidden">
-          <button id="toggle-menu" aria-label="Toggle Menu">
-            <svg
-              fill="currentColor"
-              class="w-6 h-6 text-dark hover:text-deepblue"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Toggle Menu</title>
-              <path
-                class="astronav-close-icon astronav-toggle hidden"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"
-              ></path>
-              <path
-                class="astronav-open-icon astronav-toggle"
-                fill-rule="evenodd"
-                d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"
-              ></path>
-            </svg>
-          </button>
-        </div>
+      <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
+        {
+          Object.entries(links).map(([link, label]) => (
+            <li class="w-full flex justify-center hover:text-primary after:h-2 after:w-full ">
+              <a class="" href={link}>
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex gap-2 justify-center text-primary mt-4 lg:hidden">
+        <CommonSvg raw={InstagraSvg} class="hover:text-bright size-6" />
+        <CommonSvg raw={FacebookSvg} class="hover:text-bright size-6" />
       </div>
-      <nav class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
-        <ul class="flex flex-col lg:flex-row gap-4 lg:gap-8 items-center">
-          {
-            Object.entries(links).map(([link, label]) => (
-              <li class="w-full flex justify-center hover:text-primary after:h-2 after:w-full ">
-                <a class="" href={link}>
-                  {label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        <div class="flex gap-2 justify-center text-primary mt-4 lg:hidden">
-          <CommonSvg raw={InstagraSvg} class="hover:text-dark w-6 h-6" />
-          <CommonSvg raw={FacebookSvg} class="hover:text-dark w-6 h-6" />
-        </div>
-      </nav>
-      <div class="flex gap-4 justify-center text-primary ml-auto">
-        <CommonSvg raw={InstagraSvg} class="hover:text-dark w-6 h-6" />
-        <CommonSvg raw={FacebookSvg} class="hover:text-dark w-6 h-6" />
-      </div>
+    </nav>
+    <div class="hidden lg:flex gap-4 justify-center text-primary ml-auto">
+      <CommonSvg raw={InstagraSvg} class="hover:text-bright size-6" />
+      <CommonSvg raw={FacebookSvg} class="hover:text-bright size-6" />
     </div>
   </div>
 </header>
