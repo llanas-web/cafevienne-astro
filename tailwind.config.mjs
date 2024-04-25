@@ -40,6 +40,12 @@ export default {
         lg: "64rem",
         xl: "90rem",
       },
+      maxWidth: {
+        sm: "32rem",
+        md: "48rem",
+        lg: "64rem",
+        xl: "90rem",
+      },
     },
   },
   plugins: [],

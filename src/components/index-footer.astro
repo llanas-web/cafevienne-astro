@@ -17,20 +17,22 @@ export interface Props {
 const { footer } = Astro.props;
 ---
 
-<footer class="w-full h-96 bg-secondary text-bright">
+<footer class="w-full lg:h-96 bg-secondary text-bright">
   <div
-    class="container flex flex-row h-full w-full justify-evenly items-center"
+    class="container flex flex-col lg:flex-row h-full w-full justify-evenly items-center gap-8 py-4"
   >
-    <div class="w-1/3">
+    <div class="basis">
       <CommonSvg
         raw={CafeVienneSvg}
-        class="w-[12rem] h-[12rem] aspect-square drop-shadow-md text-primary"
+        class="size-16 m-auto lg:size-[12rem] aspect-square drop-shadow-md text-primary"
       />
     </div>
-    <div class="w-1/3 text-center space-y-6">
+    <div class="basis text-center space-y-6">
       <h3 class="font-valencia">{footer.title}</h3>
       <h4 class="font-cormorant">{footer.subtitle}</h4>
-      <div class="flex flex-col justify-center gap-6 w-56 m-auto font-cormier">
+      <div
+        class="flex flex-col justify-center gap-4 lg:gap-6 w-56 m-auto font-cormier"
+      >
         <a
           href={`tel:${footer.phone}`}
           class="flex justify-between items-center hover:text-primary"
@@ -54,7 +56,7 @@ const { footer } = Astro.props;
         </a>
       </div>
     </div>
-    <div class="w-1/3 flex flex-col gap-6 font-cormorant">
+    <div class="basis flex flex-col gap-4 lg:gap-6 font-cormorant">
       <div class="flex gap-4 justify-center text-primary">
         <CommonSvg raw={InstagraSvg} class="size-8 hover:text-bright" />
         <CommonSvg raw={FacebookSvg} class="size-8 hover:text-bright" />

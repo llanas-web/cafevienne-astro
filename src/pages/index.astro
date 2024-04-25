@@ -68,36 +68,3 @@ const { entete, histoire, menu, salon_header, salon_content, medias, footer } =
   <HomeMedia medias={medias.data.map((item) => item.attributes)} />
   <IndexFooter footer={footer} />
 </Layout>
-<!-- 
-  <section class="bg-bright">
-    <div class="flex flex-row w-full max-w-screen-xl m-auto px-16 py-56 gap-8">
-      {
-        listRedirections.map((redirection) => (
-          <div class="w-1/3">
-            <HomeRedirection
-              title={redirection.title}
-              description={redirection.description}
-              link={redirection.link}
-              image={redirection.image}
-              alternative={redirection.alternative}
-            />
-          </div>
-        ))
-      }
-    </div>
-  </section>
-  <div
-    class="w-full h-56 bg-dark overflow-hidden flex justify-center items-center"
-  >
-    <Image
-      data-parallax="2"
-      src={TablesForegroundImage}
-      widths={[240, 540, 720, TablesForegroundImage.width]}
-      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${TablesForegroundImage.width}px`}
-      alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
-      class="w-full object-cover object-center brightness-75"
-    />
-  </div>
-  <section class="w-full bg-bright flex justify-center items-center py-56">
-  </section>
-  <IndexFooter /> -->

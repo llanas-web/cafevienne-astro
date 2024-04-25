@@ -25,7 +25,7 @@ const { header, content } = Astro.props;
     <article>
       <h3 class="font-valencia text-xl text-primary">{header.subtitle}</h3>
       <h2 class="font-cormier text-4xl">{header.title}</h2>
-      <p class="font-cormorant w-sm mt-6 text-[18px]">{header.content}</p>
+      <p class="font-cormorant max-w-sm mt-6 text-[18px]">{header.content}</p>
     </article>
     <!-- Content -->
     <article class="flex flex-col lg:flex-row w-full lg:h-sm gap-[-16rem]">
