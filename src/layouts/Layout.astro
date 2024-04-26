@@ -22,11 +22,11 @@ const { seo, lang } = Astro.props;
       image={seo.metaImage.data.attributes.formats["small"].url}
       favicon={"/favicon.svg"}
       author="Boris MAURENCE - Llanas.dev"
-      canonicalUrl={Astro.url.toString()}
+      canonicalUrl="https://cafe-vienne.fr"
       type={"website"}
       astroGenerator={true}
     />
-    <meta property="og:url" content={Astro.url.toString()} />
+    <meta property="og:url" content="https://cafe-vienne.fr" />
     <meta property="og:description" content={seo.metaDescription} />
   </head>
   <body class="bg-bright text-dark scroll-smooth">
