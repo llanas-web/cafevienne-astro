@@ -58,8 +58,12 @@ const { footer } = Astro.props;
     </div>
     <div class="basis flex flex-col gap-4 lg:gap-6 font-cormorant">
       <div class="flex gap-4 justify-center text-primary">
-        <CommonSvg raw={InstagraSvg} class="size-8 hover:text-bright" />
-        <CommonSvg raw={FacebookSvg} class="size-8 hover:text-bright" />
+        <a href="https://www.instagram.com/le_cafe_vienne">
+          <CommonSvg raw={InstagraSvg} class="size-8 hover:text-bright" />
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100063773733704">
+          <CommonSvg raw={FacebookSvg} class="size-8 hover:text-bright" />
+        </a>
       </div>
       <div
         class="flex flex-row gap-2 justify-center items-center font-cormorant"
