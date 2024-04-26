@@ -6,18 +6,23 @@ import type {
 import CommonSvg from "../common/common-svg.astro";
 import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
 import PhoneSvg from "../../assets/icons/phone.svg?raw";
+import { Image } from "astro:assets";
+import SalonImage from "../../assets/images/salon.jpg";
 
 export interface Props {
-  header: PageHeader;
-  content: PageContent;
+  salon: PageContent;
 }
 
-const { header, content } = Astro.props;
+const { salon } = Astro.props;
 ---
 
 <section id="salons" class="relative">
-  <CommonStrapiImage
-    image={header.background.data.attributes}
+  <Image
+    data-parallax="2"
+    src={SalonImage}
+    widths={[240, 540, 720, SalonImage.width]}
+    sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${SalonImage.width}px`}
+    alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
     class="h-md w-full object-cover"
   />
   <div
@@ -25,34 +30,22 @@ const { header, content } = Astro.props;
   >
     <!-- Header -->
     <article>
-      <h3 class="font-valencia text-xl text-primary">{header.subtitle}</h3>
-      <h2 class="font-cormier text-4xl">{header.title}</h2>
-      <p class="font-cormorant max-w-sm mt-6 text-[18px]">{header.content}</p>
+      <h3 class="font-valencia text-xl text-primary">{salon.subtitle}</h3>
+      <h2 class="font-cormier text-4xl">{salon.title}</h2>
+      <p class="font-cormorant max-w-sm mt-6 text-[18px]">{salon.content}</p>
     </article>
     <!-- Content -->
-    <article class="flex flex-col lg:flex-row w-full lg:h-sm gap-[-16rem]">
-      <div class="basis-1/2 lg:aspect-square">
-        <CommonStrapiImage
-          image={content.images.data[0].attributes}
-          class="w-full h-full object-cover"
-        />
-      </div>
-      <div
-        class="bg-bright text-dark relative z-10 mt-4 lg:m-12 p-8 lg:-ml-24 space-y-8"
-      >
-        <h2 class="font-valencia text-xl text-primary">{content.title}</h2>
-        <p class="font-cormorant mt-6 text-[18px]">{content.content}</p>
-        <div class="w-full">
-          <a href="#contact">
-            <button
-              class="h-14 w-44 flex justify-center items-center gap-8 px-4 py-1 bg-secondary text-bright rounded-[4px] m-auto"
-            >
-              <span class="">Contact</span>
-              <CommonSvg raw={PhoneSvg} class="size-6" />
-            </button>
-          </a>
-        </div>
-      </div>
-    </article>
+    <div
+      class="columns-2 md:columns-3 lg:columns-4 table-fixed gap-4 space-y-4"
+    >
+      {
+        salon.images.data.map((image) => (
+          <CommonStrapiImage
+            image={image.attributes}
+            class="w-full object-cover"
+          />
+        ))
+      }
+    </div>
   </div>
 </section>

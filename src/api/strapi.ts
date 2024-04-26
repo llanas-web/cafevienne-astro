@@ -4,7 +4,6 @@ import type {
   StrapiEncapsuler,
   StrapiEncapsulerList,
 } from "../models/strapi/common/encapsuler";
-import type { CarteModel } from "../models/strapi/carte.model";
 
 const listLocale = ["all", "fr", "en", "es", "ca"] as const;
 
@@ -52,8 +51,7 @@ export const useStrapi = (locale: (typeof listLocale)[number] = "all") => {
         ...populateComponent("histoire", "images"),
         ...populateComponent("menu", "images"),
         ...populateComponent("carte"),
-        ...populateComponent("salon_header", "background"),
-        ...populateComponent("salon_content", "images"),
+        ...populateComponent("salon", "images"),
         ...populateComponent("medias"),
         ...populateComponent("footer"),
       ],
