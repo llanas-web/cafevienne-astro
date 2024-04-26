@@ -66,13 +66,21 @@ const { links } = Astro.props;
         }
       </ul>
       <div class="flex gap-2 justify-center text-primary mt-4 lg:hidden">
-        <CommonSvg raw={InstagraSvg} class="hover:text-bright size-6" />
-        <CommonSvg raw={FacebookSvg} class="hover:text-bright size-6" />
+        <a href="https://www.instagram.com/le_cafe_vienne">
+          <CommonSvg raw={InstagraSvg} class="hover:text-bright size-6" />
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100063773733704">
+          <CommonSvg raw={FacebookSvg} class="hover:text-bright size-6" />
+        </a>
       </div>
     </nav>
     <div class="hidden lg:flex gap-4 justify-center text-primary ml-auto">
-      <CommonSvg raw={InstagraSvg} class="hover:text-bright size-6" />
-      <CommonSvg raw={FacebookSvg} class="hover:text-bright size-6" />
+      <a href="https://www.instagram.com/le_cafe_vienne">
+        <CommonSvg raw={InstagraSvg} class="hover:text-bright size-6" />
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100063773733704">
+        <CommonSvg raw={FacebookSvg} class="hover:text-bright size-6" />
+      </a>
     </div>
   </div>
 </header>
