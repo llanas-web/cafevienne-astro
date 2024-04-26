@@ -8,6 +8,7 @@ import type {
   PageFooter,
   PageHeader,
 } from "./components/page.interface";
+import type { SeoPlugin } from "./components/seo.interface";
 import type { StrapiLocale } from "./locale.interface";
 
 export interface AccueilModel extends StrapiLocale {
@@ -18,4 +19,5 @@ export interface AccueilModel extends StrapiLocale {
   salon: PageContent;
   medias: StrapiEncapsulerList<CommonMedia>;
   footer: PageFooter;
+  seo: SeoPlugin;
 }
