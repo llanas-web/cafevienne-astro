@@ -16,6 +16,7 @@
     "@types/qs": "^6.9.14",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "astro": "^4.6.1",
+    "astro-seo-metadata": "^0.6.0",
     "marked": "^12.0.2",
     "qs": "^6.12.1",
     "sharp": "^0.33.3",

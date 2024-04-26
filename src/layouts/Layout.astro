@@ -1,24 +1,33 @@
 ---
 import CommonHeader from "../components/common/common-header.astro";
+import type { SeoPlugin } from "../models/strapi/components/seo.interface";
+import { SEOMetadata } from "astro-seo-metadata";
 
 interface Props {
-  title: string;
+  seo: SeoPlugin;
   lang: string;
 }
 
-const { title, lang } = Astro.props;
+const { seo, lang } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <CommonHeader />
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <SEOMetadata
+      siteName={"Café Vienne"}
+      title={seo.metaTitle}
+      description={seo.metaDescription}
+      image={seo.metaImage.data.attributes.formats["small"].url}
+      favicon={"/favicon.svg"}
+      author="Boris MAURENCE - Llanas.dev"
+      canonicalUrl={Astro.url.toString()}
+      type={"website"}
+      astroGenerator={true}
+    />
+    <meta property="og:url" content={Astro.url.toString()} />
+    <meta property="og:description" content={seo.metaDescription} />
   </head>
   <body class="bg-bright text-dark scroll-smooth">
     <slot />

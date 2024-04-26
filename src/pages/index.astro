@@ -26,11 +26,11 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
-const { entete, histoire, menu, carte, salon, medias, footer } =
+const { entete, histoire, menu, carte, salon, medias, footer, seo } =
   strapiAccueil.data.attributes;
 ---
 
-<Layout title="" lang="fr">
+<Layout seo={seo} lang="fr">
   <IndexNavbar links={listLinks} />
   <HomeHero entete={entete} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-6" />

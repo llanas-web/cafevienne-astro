@@ -36,5 +36,5 @@ const imageUrl = getImageUrlFromFormat(image, format);
 ---
 
 <Fragment
-  set:html={`<img src="http://localhost:1337${imageUrl}" alt="${image.alternativeText}" ${attributesString}/>`}
+  set:html={`<img src="${imageUrl}" alt="${image.alternativeText}" ${attributesString}/>`}
 />
