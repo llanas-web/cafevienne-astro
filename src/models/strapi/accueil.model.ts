@@ -15,8 +15,7 @@ export interface AccueilModel extends StrapiLocale {
   histoire: PageContent;
   menu: PageContent;
   carte: StrapiEncapsuler<CommonMedia>;
-  salon_header: PageHeader;
-  salon_content: PageContent;
+  salon: PageContent;
   medias: StrapiEncapsulerList<CommonMedia>;
   footer: PageFooter;
 }
