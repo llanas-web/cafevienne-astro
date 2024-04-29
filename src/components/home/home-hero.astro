@@ -14,14 +14,14 @@ const { title, subtitle, background } = Astro.props.entete;
     data-parallax="2"
     image={background.data.attributes}
     format="large"
-    class="absolute z-1 object-cover object-center w-[110%] h-[110%] filter brightness-[30%]"
+    class="absolute z-1 object-cover object-center w-[110%] h-[110%] filter brightness-[40%]"
   />
   <div
     class="absolute w-full m-auto h-full flex flex-col gap-8 justify-center items-center z-10 text-bright"
   >
     <div class="container max-w-sm text-center space-y-6">
       <span class="font-ornaments text-[100px] text-primary">a</span>
-      <h1 class="text-4xl leading-normal md:text-[56px] font-cormier px-12">
+      <h1 class="text-4xl leading-normal md:text-[56px] font-cormier">
         {title}
       </h1>
       <h3 class="text-bright font-metropolis text-2xl tracking-wider">
