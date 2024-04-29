@@ -1,0 +1,34 @@
+---
+import { marked } from "marked";
+import VisuelCantagrillImage from "../../assets/images/visuel-cantagrill.jpg";
+import CommonProse from "../common/common-prose.astro";
+import { Image } from "astro:assets";
+
+export interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<section class="container flex justify-between items-center m-auto w-full">
+  <div class="basis-1/2">
+    <Image
+      src={VisuelCantagrillImage}
+      widths={[240, 540, 720, VisuelCantagrillImage.width]}
+      sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${VisuelCantagrillImage.width}px`}
+      alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
+      class="h-full w-full object-cover"
+    />
+  </div>
+  <article class="basis-1/2 p-12">
+    <div
+      class="prose text-dark prose-headings:m-0
+        prose-h2:text-rose-800 prose-h2:font-cormier prose-h2:text-3xl prose-h2:mb-8
+        prose-h3:text-primary prose-h3:font-cormier prose-h3:text-3xl prose-h3:mb-8
+        prose-h4:font-cormorant prose-h4:text-xl"
+    >
+      <div class="rich-text text-center" set:html={marked.parse(text)} />
+    </div>
+  </article>
+</section>

@@ -16,6 +16,7 @@ import ContactImage from "../assets/images/contact.jpg";
 import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
 
 import DividerSvg from "../assets/icons/divider.svg?raw";
+import HomeVisuel from "../components/home/home-visuel.astro";
 
 const listLinks = {
   "#accueil": "Accueil",
@@ -26,7 +27,7 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
-const { entete, histoire, menu, carte, salon, medias, footer, seo } =
+const { entete, histoire, menu, visuel, carte, salon, medias, footer, seo } =
   strapiAccueil.data.attributes;
 ---
 
@@ -53,6 +54,7 @@ const { entete, histoire, menu, carte, salon, medias, footer, seo } =
     </div>
   </div>
   <HomeMenu menu={menu} carte={carte.data.attributes} />
+  <HomeVisuel text={visuel} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
   <HomeSalon salon={salon} />
   <div class="h-72 w-full overflow-hidden relative">
