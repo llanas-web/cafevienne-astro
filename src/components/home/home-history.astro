@@ -13,11 +13,11 @@ const { history } = Astro.props;
 
 <section id="histoire" class="container py-32">
   <div class="grid grid-flow-row lg:grid-cols-2 lg:grid-rows-2 gap-6">
-    <div>
+    <div class="max-w-full">
       <CommonStrapiImage
         image={history.images.data[0].attributes}
         format="large"
-        class="h-full object-cover shadow-xl rounded-sm"
+        class="h-full object-contain drop-shadow-xl rounded-sm"
       />
     </div>
     <div class="flex flex-col p-8">
@@ -34,7 +34,7 @@ const { history } = Astro.props;
     <CommonStrapiImage
       image={history.images.data[1].attributes}
       format="large"
-      class="h-full object-cover shadow-xl rounded-sm"
+      class="h-full object-contain drop-shadow-xl rounded-sm"
     />
   </div>
 </section>

@@ -57,6 +57,7 @@ const { entete, histoire, menu, visuel, carte, salon, medias, footer, seo } =
   <HomeVisuel text={visuel} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
   <HomeSalon salon={salon} />
+  <HomeMedia medias={medias.data.map((item) => item.attributes)} />
   <div class="h-72 w-full overflow-hidden relative">
     <Image
       data-parallax="2"
@@ -64,9 +65,8 @@ const { entete, histoire, menu, visuel, carte, salon, medias, footer, seo } =
       widths={[240, 540, 720, ContactImage.width]}
       sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${TablesForegroundImage.width}px`}
       alt="Tables du café vienne en avant plan avec terrasse en arrière plan"
-      class="w-full object-cover object-center brightness-[35%] absolute -z-10 grayscale"
+      class="w-full object-cover object-center absolute -z-10 grayscale"
     />
   </div>
-  <HomeMedia medias={medias.data.map((item) => item.attributes)} />
   <IndexFooter footer={footer} />
 </Layout>
