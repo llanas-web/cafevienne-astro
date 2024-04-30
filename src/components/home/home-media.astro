@@ -3,18 +3,17 @@ import type { CommonMedia } from "../../models/strapi/common/media";
 import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
 
 export interface Props {
+  video: CommonMedia;
   medias: CommonMedia[];
 }
 
-const { medias } = Astro.props;
+const { video, medias } = Astro.props;
 ---
 
-<section id="medias" class="container my-56">
+<section id="medias" class="container md:my-56">
   <div class="py-20">
     <video controls class="m-auto lg:w-lg">
-      <source
-        src="https://cafevienne-strapi.s3.eu-west-3.amazonaws.com/cafe-vienne-restaurant.m4v"
-      />
+      <source src={video.url} />
     </video>
   </div>
   <div class="m-auto">

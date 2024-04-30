@@ -27,8 +27,18 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
-const { entete, histoire, menu, visuel, carte, salon, medias, footer, seo } =
-  strapiAccueil.data.attributes;
+const {
+  entete,
+  histoire,
+  menu,
+  visuel,
+  carte,
+  salon,
+  video,
+  medias,
+  footer,
+  seo,
+} = strapiAccueil.data.attributes;
 ---
 
 <Layout seo={seo} lang="fr">
@@ -57,7 +67,10 @@ const { entete, histoire, menu, visuel, carte, salon, medias, footer, seo } =
   <HomeVisuel text={visuel} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
   <HomeSalon salon={salon} />
-  <HomeMedia medias={medias.data.map((item) => item.attributes)} />
+  <HomeMedia
+    video={video.data.attributes}
+    medias={medias.data.map((item) => item.attributes)}
+  />
   <div class="h-72 w-full overflow-hidden relative">
     <Image
       data-parallax="2"
