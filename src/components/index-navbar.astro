@@ -66,29 +66,38 @@ const { links } = Astro.props;
         }
       </ul>
       <div class="flex gap-2 justify-center text-primary mt-4 lg:hidden">
-        <a href="https://www.instagram.com/le_cafe_vienne">
+        <a href="https://www.instagram.com/le_cafe_vienne" target="_blank">
           <CommonSvg raw={InstagraSvg} class="hover:text-bright size-6" />
         </a>
-        <a href="https://www.facebook.com/profile.php?id=100063773733704">
+        <a
+          href="https://www.facebook.com/profile.php?id=100063773733704"
+          target="_blank"
+        >
           <CommonSvg raw={FacebookSvg} class="hover:text-bright size-6" />
         </a>
       </div>
     </nav>
     <div class="hidden lg:flex gap-4 justify-center text-primary ml-auto">
-      <a href="https://www.instagram.com/le_cafe_vienne">
+      <a href="https://www.instagram.com/le_cafe_vienne" target="_blank">
         <CommonSvg raw={InstagraSvg} class="hover:text-bright size-6" />
       </a>
-      <a href="https://www.facebook.com/profile.php?id=100063773733704">
+      <a
+        href="https://www.facebook.com/profile.php?id=100063773733704"
+        target="_blank"
+      >
         <CommonSvg raw={FacebookSvg} class="hover:text-bright size-6" />
       </a>
     </div>
   </div>
 </header>
 <script is:inline>
+  const listLink = document.querySelectorAll("a");
   const button = document.querySelector("#toggle-menu");
-  button.addEventListener("click", () => {
-    const nav = document.querySelector("nav");
-    nav.classList.toggle("hidden");
+  [...listLink, button].forEach((el) => {
+    el.addEventListener("click", () => {
+      const nav = document.querySelector("nav");
+      nav.classList.toggle("hidden");
+    });
   });
 </script>
 <script is:inline>
