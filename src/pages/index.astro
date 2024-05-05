@@ -34,6 +34,7 @@ const {
   visuel,
   carte,
   salon,
+  expos,
   video,
   medias,
   footer,
@@ -66,7 +67,7 @@ const {
   <HomeMenu menu={menu} carte={carte.data.attributes} />
   <HomeVisuel text={visuel} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
-  <HomeSalon salon={salon} />
+  <HomeSalon salon={salon} expos={expos} />
   <HomeMedia
     video={video.data.attributes}
     medias={medias.data.map((item) => item.attributes)}

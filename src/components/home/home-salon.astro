@@ -1,19 +1,24 @@
 ---
 import type {
   PageContent,
-  PageHeader,
+  PageEvent,
 } from "../../models/strapi/components/page.interface";
-import CommonSvg from "../common/common-svg.astro";
 import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
-import PhoneSvg from "../../assets/icons/phone.svg?raw";
 import { Image } from "astro:assets";
 import SalonImage from "../../assets/images/salon.jpg";
+import dayjs from "dayjs";
+import fr from "dayjs/locale/fr";
+import CommonSvg from "../common/common-svg.astro";
+import CalendarSvg from "../../assets/icons/calendar.svg?raw";
+
+dayjs.locale(fr);
 
 export interface Props {
   salon: PageContent;
+  expos: PageEvent[];
 }
 
-const { salon } = Astro.props;
+const { salon, expos } = Astro.props;
 ---
 
 <section id="salons" class="relative overflow-hidden">
@@ -44,6 +49,40 @@ const { salon } = Astro.props;
             image={image.attributes}
             class="w-full object-cover"
           />
+        ))
+      }
+    </div>
+    <div class="mt-28 flex flex-col">
+      <h2 class="font-valencia text-4xl text-primary mb-8">
+        Prochaines expositions
+      </h2>
+      {
+        expos.map((expo) => (
+          <article>
+            <span class="font-cormier flex flex-row gap-2 items-center mb-4">
+              <CommonSvg raw={CalendarSvg} class="size-4 " />
+              {dayjs(expo.starting).locale("fr").format("D MMM YYYY")} -{" "}
+              {dayjs(expo.ending).locale("fr").format("D MMM YYYY")}
+            </span>
+            <div class="w-full flex flex-col md:flex-row gap-8">
+              <CommonStrapiImage
+                image={expo.image.data.attributes}
+                class="md:w-1/3 object-contain"
+              />
+              <div class="w-full">
+                <h2 class="font-valencia text-xl">{expo.title}</h2>
+                <p class="font-cormorant max-w-sm mt-6 text-base">
+                  {expo.description}
+                </p>
+                <div class="mt-4">
+                  <span class="font-valencia ">Vernissage</span>
+                  <span class="text-primary font-cormier underline">
+                    {dayjs(expo.vernissage).format("D MMM YYYY - HH:mm")}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
         ))
       }
     </div>

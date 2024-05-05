@@ -7,6 +7,9 @@ import basicSsl from "@vitejs/plugin-basic-ssl";
 const confProd = {
   output: "static",
   adapter: vercelStatic(),
+  vite: {
+    plugins: [basicSsl()],
+  },
 };
 const confPreview = {
   output: "server",
@@ -26,8 +29,5 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: false,
     },
-  },
-  vite: {
-    plugins: [basicSsl()],
   },
 });

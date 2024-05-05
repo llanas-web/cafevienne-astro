@@ -18,6 +18,15 @@ export interface PageContent {
   images: StrapiEncapsulerList<CommonMedia>;
 }
 
+export interface PageEvent {
+  title: string;
+  description?: string;
+  starting: string;
+  ending: string;
+  vernissage: string;
+  image: StrapiEncapsuler<CommonMedia>;
+}
+
 export interface PageDivider {
   content: string;
   background: StrapiEncapsuler<CommonMedia>;

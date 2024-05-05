@@ -55,6 +55,7 @@ export const useStrapi = (locale: (typeof listLocale)[number] = "all") => {
         ...populateComponent("video"),
         ...populateComponent("medias"),
         ...populateComponent("footer"),
+        ...populateComponent("expos", "image"),
         ...["seo", "seo.metaImage", "seo.metaSocial"],
       ],
       locale,

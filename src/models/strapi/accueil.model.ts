@@ -5,6 +5,7 @@ import type {
 import type { CommonMedia } from "./common/media";
 import type {
   PageContent,
+  PageEvent,
   PageFooter,
   PageHeader,
 } from "./components/page.interface";
@@ -18,6 +19,7 @@ export interface AccueilModel extends StrapiLocale {
   visuel: string;
   carte: StrapiEncapsuler<CommonMedia>;
   salon: PageContent;
+  expos: PageEvent[];
   video: StrapiEncapsuler<CommonMedia>;
   medias: StrapiEncapsulerList<CommonMedia>;
   footer: PageFooter;
