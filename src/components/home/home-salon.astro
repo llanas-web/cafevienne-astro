@@ -8,10 +8,14 @@ import { Image } from "astro:assets";
 import SalonImage from "../../assets/images/salon.jpg";
 import dayjs from "dayjs";
 import fr from "dayjs/locale/fr";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import CommonSvg from "../common/common-svg.astro";
 import CalendarSvg from "../../assets/icons/calendar.svg?raw";
 
 dayjs.locale(fr);
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export interface Props {
   salon: PageContent;
@@ -21,7 +25,7 @@ export interface Props {
 const { salon, expos } = Astro.props;
 ---
 
-<section id="salons" class="relative overflow-hidden">
+<section class="relative overflow-hidden">
   <Image
     data-parallax="2"
     src={SalonImage}
@@ -31,6 +35,7 @@ const { salon, expos } = Astro.props;
     class="h-md w-full object-cover"
   />
   <div
+    id="salons"
     class="relative -top-24 bg-secondary container p-8 md:p-12 lg:p-32 text-bright space-y-24"
   >
     <!-- Header -->
@@ -52,7 +57,7 @@ const { salon, expos } = Astro.props;
         ))
       }
     </div>
-    <div class="mt-28 flex flex-col">
+    <div id="expositions" class="pt-28 flex flex-col">
       <h2 class="font-valencia text-4xl text-primary mb-8">
         Prochaines expositions
       </h2>
@@ -77,7 +82,9 @@ const { salon, expos } = Astro.props;
                 <div class="mt-4">
                   <span class="font-valencia ">Vernissage</span>
                   <span class="text-primary font-cormier underline">
-                    {dayjs(expo.vernissage).format("D MMM YYYY - HH:mm")}
+                    {dayjs(expo.vernissage)
+                      .tz("Europe/Paris")
+                      .format("D MMM YYYY - HH:mm")}
                   </span>
                 </div>
               </div>

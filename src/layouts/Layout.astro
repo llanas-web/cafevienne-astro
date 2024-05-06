@@ -69,7 +69,16 @@ const { seo, lang } = Astro.props;
         observer.observe(element);
       });
 
+      var prevScrollpos = window.scrollY;
       window.addEventListener("scroll", () => {
+        /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+        var currentScrollPos = window.scrollY;
+        if (prevScrollpos > currentScrollPos) {
+          document.getElementById("header").style.top = "0";
+        } else {
+          document.getElementById("header").style.top = "-112px";
+        }
+        prevScrollpos = currentScrollPos;
         hasBeenScrolled = true;
       });
 
