@@ -17,6 +17,7 @@ import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
 
 import DividerSvg from "../assets/icons/divider.svg?raw";
 import HomeVisuel from "../components/home/home-visuel.astro";
+import ModalPhotos from "../components/modal-photos.astro";
 
 const listLinks = {
   "#accueil": "Accueil",
@@ -69,9 +70,17 @@ const {
   <HomeVisuel text={visuel} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
   <HomeSalon salon={salon} expos={expos} />
+  <ModalPhotos
+    name="salon"
+    images={salon.images.data.map((image) => image.attributes)}
+  />
   <HomeMedia
     video={video.data.attributes}
     medias={medias.data.map((item) => item.attributes)}
+  />
+  <ModalPhotos
+    name="media"
+    images={medias.data.map((image) => image.attributes)}
   />
   <div class="h-72 w-full overflow-hidden relative">
     <Image

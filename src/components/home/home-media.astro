@@ -22,9 +22,14 @@ const { video, medias } = Astro.props;
       class="mt-16 columns-2 md:columns-4 lg:columns-5 table-fixed gap-4 space-y-4"
     >
       {
-        medias.map((image) => (
+        medias.map((image, index) => (
           <div>
-            <CommonStrapiImage image={image} class="max-w-full rounded-sm" />
+            <CommonStrapiImage
+              data-swiper-name="media"
+              data-swiper-index={index}
+              image={image}
+              class="max-w-full rounded-sm"
+            />
           </div>
         ))
       }

@@ -12,6 +12,7 @@ import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
 import CommonSvg from "../common/common-svg.astro";
 import CalendarSvg from "../../assets/icons/calendar.svg?raw";
+import ModalPhotos from "../modal-photos.astro";
 
 dayjs.locale(fr);
 dayjs.extend(utc);
@@ -49,10 +50,12 @@ const { salon, expos } = Astro.props;
       class="columns-2 md:columns-3 lg:columns-4 table-fixed gap-4 space-y-4"
     >
       {
-        salon.images.data.map((image) => (
+        salon.images.data.map((image, index) => (
           <CommonStrapiImage
             image={image.attributes}
             class="w-full object-cover"
+            data-swiper-index={index}
+            data-swiper-name="salon"
           />
         ))
       }

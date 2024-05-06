@@ -24,9 +24,9 @@ export const getImageUrlFromFormat = (
   if (!image) return null;
   if (!format) return image.url;
   else {
-    let imageUrl = image.formats[format].url;
+    let imageUrl = image.formats[format]?.url;
     if (!imageUrl) {
-      imageUrl = image.formats[listImageFormat.indexOf(format) + 1].url;
+      imageUrl = image.url;
     }
     return imageUrl;
   }
