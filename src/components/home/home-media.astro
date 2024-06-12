@@ -1,5 +1,7 @@
 ---
 import type { CommonMedia } from "../../models/strapi/common/media";
+import PlaySvg from "../../assets/icons/play.svg?raw";
+import CommonSvg from "../common/common-svg.astro";
 import CommonStrapiImage from "../common/strapi/common-strapi-image.astro";
 
 export interface Props {
@@ -11,7 +13,16 @@ const { video, medias } = Astro.props;
 ---
 
 <section id="medias" class="container md:my-56">
-  <div class="py-20">
+  <div class="py-20 relative">
+    <div
+      data-overlay
+      class="absolute aspect-video w-full z-10 flex flex-col justify-center items-center text-bright bg-slate-900 bg-opacity-50 gap-4"
+    >
+      <h3 class="font-valencia text-4xl">Suivez la visite guidée</h3>
+      <div>
+        <CommonSvg data-overlay-action raw={PlaySvg} class="m-auto w-16 h-16" />
+      </div>
+    </div>
     <video controls class="m-auto lg:w-lg">
       <source src={video.url} />
     </video>
@@ -36,3 +47,14 @@ const { video, medias } = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  const overlay = document.querySelector<HTMLElement>("[data-overlay]");
+  const video = document.querySelector("video");
+  const overlayAction = document.querySelector("[data-overlay-action]");
+  overlayAction?.addEventListener("click", () => {
+    if (!overlay || !video) return;
+    overlay.style.display = "none";
+    video?.play();
+  });
+</script>
