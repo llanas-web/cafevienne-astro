@@ -1,19 +1,18 @@
 import { defineConfig } from "astro/config";
-import vercelServerless from "@astrojs/vercel/serverless";
-import vercelStatic from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel";
 import tailwind from "@astrojs/tailwind";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 
 const confProd = {
   output: "static",
-  adapter: vercelStatic(),
+  adapter: vercel(),
   vite: {
     plugins: [basicSsl()],
   },
 };
 const confPreview = {
   output: "server",
-  adapter: vercelServerless(),
+  adapter: vercel(),
 };
 
 // https://astro.build/config

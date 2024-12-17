@@ -18,6 +18,7 @@ import TablesForegroundImage from "../assets/images/tables-foreground.jpg";
 import DividerSvg from "../assets/icons/divider.svg?raw";
 import HomeVisuel from "../components/home/home-visuel.astro";
 import ModalPhotos from "../components/modal-photos.astro";
+import HomeMenuSpecial from "../components/home/home-menu-special.astro";
 
 const listLinks = {
   "#accueil": "Accueil",
@@ -33,6 +34,7 @@ const {
   entete,
   histoire,
   menu,
+  menu_special,
   visuel,
   carte,
   salon,
@@ -42,6 +44,7 @@ const {
   footer,
   seo,
 } = strapiAccueil.data.attributes;
+console.log(strapiAccueil.data.attributes);
 ---
 
 <Layout seo={seo} lang="fr">
@@ -67,6 +70,8 @@ const {
     </div>
   </div>
   <HomeMenu menu={menu} carte={carte.data.attributes} />
+  <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
+  <HomeMenuSpecial menu={menu_special} carte={carte.data.attributes} />
   <HomeVisuel text={visuel} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
   <HomeSalon salon={salon} expos={expos} />

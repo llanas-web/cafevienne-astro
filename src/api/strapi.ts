@@ -50,6 +50,7 @@ export const useStrapi = (locale: (typeof listLocale)[number] = "all") => {
         ...populateComponent("entete", "background"),
         ...populateComponent("histoire", "images"),
         ...populateComponent("menu", "images"),
+        ...populateComponent("menu_special", "images"),
         ...populateComponent("carte"),
         ...populateComponent("salon", "images"),
         ...populateComponent("video"),
