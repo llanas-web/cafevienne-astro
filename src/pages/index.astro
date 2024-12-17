@@ -30,11 +30,13 @@ const listLinks = {
 
 const strapi = useStrapi("fr");
 const strapiAccueil = await strapi.getAccueil();
+console.log(strapiAccueil);
+
 const {
   entete,
   histoire,
   menu,
-  menu_special,
+  evenement,
   visuel,
   carte,
   salon,
@@ -44,7 +46,6 @@ const {
   footer,
   seo,
 } = strapiAccueil.data.attributes;
-console.log(strapiAccueil.data.attributes);
 ---
 
 <Layout seo={seo} lang="fr">
@@ -71,7 +72,7 @@ console.log(strapiAccueil.data.attributes);
   </div>
   <HomeMenu menu={menu} carte={carte.data.attributes} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
-  <HomeMenuSpecial menu={menu_special} carte={carte.data.attributes} />
+  <HomeMenuSpecial evenementContent={evenement} />
   <HomeVisuel text={visuel} />
   <CommonSvg raw={DividerSvg} class="w-full h-16 text-primary my-16" />
   <HomeSalon salon={salon} expos={expos} />

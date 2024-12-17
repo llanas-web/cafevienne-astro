@@ -16,6 +16,7 @@ export interface PageContent {
   subtitle?: string;
   content: any;
   images: StrapiEncapsulerList<CommonMedia>;
+  button?: PageButton;
 }
 
 export interface PageEvent {
@@ -38,4 +39,9 @@ export interface PageFooter {
   phone: string;
   mail: string;
   address: string;
+}
+
+export interface PageButton {
+  label: string;
+  file: StrapiEncapsuler<CommonMedia>;
 }

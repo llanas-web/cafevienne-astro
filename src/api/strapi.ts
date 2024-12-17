@@ -7,16 +7,27 @@ import type {
 
 const listLocale = ["all", "fr", "en", "es", "ca"] as const;
 
-const populateComponent = (name: string, mediaName?: string) => {
+type ComponentChild = {
+  name: string;
+  extensions?: string[];
+  childrens?: ComponentChild[];
+};
+
+const populateComponent = (
+  component: ComponentChild,
+  previousName?: string
+) => {
+  const name = previousName
+    ? `${previousName}.${component.name}`
+    : component.name;
   const listPopulated = [name];
-  if (mediaName) {
-    listPopulated.push(
-      ...[
-        `${name}.${mediaName}`,
-        `${name}.${mediaName}`,
-        `${name}${mediaName}.formats`,
-      ]
-    );
+  if (component.extensions && component.extensions.length > 0) {
+    listPopulated.push(...component.extensions.map((ext) => `${name}.${ext}`));
+  }
+  if (component.childrens && component.childrens.length > 0) {
+    component.childrens?.forEach((child) => {
+      listPopulated.push(...populateComponent(child, name));
+    });
   }
   return listPopulated;
 };
@@ -45,22 +56,48 @@ export const useStrapi = (locale: (typeof listLocale)[number] = "all") => {
   };
 
   const getAccueil = async () => {
+    const populateArray = [
+      ...populateComponent({
+        name: "entete",
+        childrens: [{ name: "background", extensions: ["formats"] }],
+      }),
+      ...populateComponent({
+        name: "histoire",
+        childrens: [{ name: "images", extensions: ["formats"] }],
+      }),
+      ...populateComponent({
+        name: "menu",
+        childrens: [{ name: "images", extensions: ["formats"] }],
+      }),
+      ...populateComponent({
+        name: "evenement",
+        childrens: [
+          { name: "images", extensions: ["formats"] },
+          {
+            name: "button",
+            childrens: [{ name: "file", extensions: ["formats"] }],
+          },
+        ],
+      }),
+      ...populateComponent({ name: "carte" }),
+      ...populateComponent({
+        name: "salon",
+        childrens: [{ name: "images", extensions: ["formats"] }],
+      }),
+      ...populateComponent({ name: "video" }),
+      ...populateComponent({ name: "medias" }),
+      ...populateComponent({ name: "footer" }),
+      ...populateComponent({
+        name: "expos",
+        childrens: [{ name: "image", extensions: ["formats"] }],
+      }),
+      ...["seo", "seo.metaImage", "seo.metaSocial"],
+    ];
     const qsString = qs.stringify({
-      populate: [
-        ...populateComponent("entete", "background"),
-        ...populateComponent("histoire", "images"),
-        ...populateComponent("menu", "images"),
-        ...populateComponent("menu_special", "images"),
-        ...populateComponent("carte"),
-        ...populateComponent("salon", "images"),
-        ...populateComponent("video"),
-        ...populateComponent("medias"),
-        ...populateComponent("footer"),
-        ...populateComponent("expos", "image"),
-        ...["seo", "seo.metaImage", "seo.metaSocial"],
-      ],
+      populate: populateArray,
       locale,
     });
+    console.log(populateArray);
     return fetchStrapi<StrapiEncapsuler<AccueilModel>>("accueil", qsString);
   };
 
